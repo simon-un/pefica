@@ -15,7 +15,7 @@ function TFIN = IMTIEM(TEXT,TINI)
     % imprimir el tiempo empleado entre el comienzo y el final 
     % de un grupo de instrucciones
     TFIN= etime(clock(),TINI); % tiempo al final de las instrucciones
-    fprintf('%s (%10.4g seg.) \n',TEXT,TFIN);
+    fprintf('%s (%-10.4g seg.) \n',TEXT,TFIN);
 
   end % endswitch
 

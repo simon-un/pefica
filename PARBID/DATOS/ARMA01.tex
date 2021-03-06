@@ -78,26 +78,31 @@ node [midway,fill=white] {#3};
 \draw (C) -- (D); 
  } 
 % dibujar elementos 
-\tikzstyle{elem}=[draw=black,thin]; 
-\tikzstyle{nudo}=[midway,above]; 
-\begin{scope}[elem] 
-\draw (0.000000,0.000000)--(6.000000,0.000000) node[nudo] {1}; 
-\draw (6.000000,0.000000)--(12.000000,0.000000) node[nudo] {2}; 
-\draw (3.000000,4.000000)--(9.000000,4.000000) node[nudo] {3}; 
-\draw (0.000000,0.000000)--(3.000000,4.000000) node[nudo] {4}; 
-\draw (3.000000,4.000000)--(6.000000,0.000000) node[nudo] {5}; 
-\draw (6.000000,0.000000)--(9.000000,4.000000) node[nudo] {6}; 
-\draw (12.000000,0.000000)--(9.000000,4.000000) node[nudo] {7}; 
+\tikzstyle{elem}=[double distance = 0.1cm,line cap=round]; 
+\tikzstyle{elet}=[black,midway,above]; 
+\tikzstyle{mat1}=[double=black!20]; 
+\tikzstyle{mat2}=[double=red!20]; 
+\tikzstyle{mat3}=[double=green!30]; 
+\tikzstyle{mat4}=[double=blue!40]; 
+\begin{scope} 
+\draw[elem,mat1] (0.000000,0.000000)--(6.000000,0.000000) node[elet] {1}; 
+\draw[elem,mat1] (6.000000,0.000000)--(12.000000,0.000000) node[elet] {2}; 
+\draw[elem,mat1] (3.000000,4.000000)--(9.000000,4.000000) node[elet] {3}; 
+\draw[elem,mat2] (0.000000,0.000000)--(3.000000,4.000000) node[elet] {4}; 
+\draw[elem,mat2] (3.000000,4.000000)--(6.000000,0.000000) node[elet] {5}; 
+\draw[elem,mat2] (6.000000,0.000000)--(9.000000,4.000000) node[elet] {6}; 
+\draw[elem,mat2] (12.000000,0.000000)--(9.000000,4.000000) node[elet] {7}; 
 \end{scope} 
 % dibujar nudos 
-\tikzstyle{nudo}=[fill=black,above right]; 
-\def \r{0.05}; 
-\begin{scope}[nudo] 
-\fill (0.000000,0.000000) circle (\r) node {1}; 
-\fill (6.000000,0.000000) circle (\r) node {2}; 
-\fill (12.000000,0.000000) circle (\r) node {3}; 
-\fill (3.000000,4.000000) circle (\r) node {4}; 
-\fill (9.000000,4.000000) circle (\r) node {5}; 
+\tikzstyle{nudo}=[fill=black]; 
+\tikzstyle{nudt}=[above=0.1cm]; 
+\def \r{0.03cm}; 
+\begin{scope} 
+\draw[nudo] (0.000000,0.000000) circle (\r) node[nudt] {1}; 
+\draw[nudo] (6.000000,0.000000) circle (\r) node[nudt] {2}; 
+\draw[nudo] (12.000000,0.000000) circle (\r) node[nudt] {3}; 
+\draw[nudo] (3.000000,4.000000) circle (\r) node[nudt] {4}; 
+\draw[nudo] (9.000000,4.000000) circle (\r) node[nudt] {5}; 
 \end{scope} 
 % dibujar apoyos 
 \apoyoseg{(0.000000,0.000000)}{0} 
