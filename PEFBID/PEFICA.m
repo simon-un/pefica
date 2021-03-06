@@ -68,7 +68,8 @@ fprintf('------------------------------------------------------------------\n');
   % adicionar carpetas y tomar tiempo inicial
   addpath('./FUNCIONES');
   addpath('./DATOS'); 
-  TINT = IMTIEM('Inicio de ejecucion del programa \n',0);
+  fprintf('Inicio de ejecucion del programa \n');
+  TINT = clock();
   
   % lectura de archivo de entrada de datos
   % -------------------------------------------------------------------------
@@ -384,5 +385,5 @@ fprintf('------------------------------------------------------------------\n');
   end % endif
   
   % mostrar tiempo final
-  TFIN = IMTIEM('Tiempo total de ejecucion del programa ',TINT);
+  TFIN = IMTIEM('Tiempo total de ejecucion del programa                      ',TINT);
 end

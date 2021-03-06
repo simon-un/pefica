@@ -9,13 +9,13 @@ function TFIN = IMTIEM(TEXT,TINI)
   if TINI==0
     % imprimir texto del comienzo de un grupo de instrucciones
     % y medir el tiempo inicial
-    fprintf(TEXT);
+    fprintf('%-60s',TEXT);
     TFIN = clock(); % tiempo al comienzo de las instrucciones
   else
     % imprimir el tiempo empleado entre el comienzo y el final 
     % de un grupo de instrucciones
     TFIN= etime(clock(),TINI); % tiempo al final de las instrucciones
-    fprintf('%s (%6.2f seg.) \n',TEXT,TFIN);
+    fprintf('%s (%-10.2f seg.) \n',TEXT,TFIN);
   end % endswitch
   % alternativa de presentación paso a paso de mensajes que solo funciona
   % en octave
