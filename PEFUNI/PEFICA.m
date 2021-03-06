@@ -1,5 +1,5 @@
 % -------------------------------------------------------------------------
-% /PEFUNI/PEFiCA: Programa de elementos finitos a código abierto. versión 2.0
+% PEFiCA: Programa de elementos finitos a código abierto. versión 2.0
 %
 % Esta versión está en la carpeta PEFUNI, e incluye:
 % Análisis elástico lineal para problemas unidimensionales de elementos
@@ -13,15 +13,18 @@
 % Universidad Nacional de Colombia
 % Facultad de Ingeniería
 % Todos los derechos reservados, 2020
-%
 
 function PEFICA (ADAT)
   clc; % limpiar pantalla
+  fprintf('----------------------------------------------------------------- \n');
+  fprintf('       PEFICA 2.0. Universidad Nacional de Colombia 2020          \n');
+  fprintf('----------------------------------------------------------------- \n');
   % adicionar carpetas
   addpath('./FUNCIONES'); 
   addpath('./DATOS');
   % tiempo inicial de la rutina
-  TINT = IMTIEM('/PEFUNI/PEFICA 2.0. Universidad Nacional de Colombia 2020 \n',0);
+  fprintf('Inicio de ejecucion del programa \n');
+  TINT = clock();
   % tiempo inicial de un grupo de instrucciones
   TINI = IMTIEM('Lectura de datos de entrada',0);
   % -------------------------------------------------------------------------
@@ -278,5 +281,5 @@ function PEFICA (ADAT)
   end % endswitch TIPR
   
   % mostrar tiempo final
-  TFIN = IMTIEM('Tiempo total de ejecucion',TINT);
+  TFIN = IMTIEM('Tiempo total de ejecucion del programa                      ',TINT);
 end
