@@ -1,0 +1,141 @@
+\documentclass{article} 
+\usepackage{tikz} 
+\begin{document} 
+\tikzstyle{isometric}=[x={(0.710cm,-0.410cm)},y={(0cm,0.820cm)},z={(-0.710cm,-0.410cm)}] 
+\tikzstyle{dimetric}=[x={(0.9cm,-0.1cm)},z={(0cm,0.9cm)},y={(+0.3cm,+0.3cm)}] 
+\tikzstyle{vista}=[x={(0.9cm,-0.3cm)},z={(0cm,0.9cm)},y={(+0.75cm,+0.3cm)}] 
+\begin{center} 
+\begin{tikzpicture}[vista] 
+% estilos de linea y relleno 
+\tikzstyle{carga} = [ultra thick,latex-]  
+% definicion apoyo empotrado 
+% #1: ubicación del apoyo 
+% #2: escala 
+ \newcommand{\apoyoemz}[2]{ 
+\coordinate (O) at #1; 
+\begin{scope}[scale=#2] 
+\draw[ultra thin,fill=black!60] (O) ++ (-0.25,-0.25,0) -- ++(0.50,0,0) -- ++(0,0.50,0) -- ++(-0.50,0,0) -- cycle; 
+\end{scope} 
+ } 
+% definicion apoyo de segundo genero 
+% #1: ubicación del apoyo 
+% #2: angulo de rotacion 
+ \newcommand{\apoyoseg}[2]{ 
+\coordinate (O) at #1; 
+\begin{scope}[rotate around={#2:(O)}] 
+\fill [black!10](O) ++(-0.45,-0.433013) rectangle ++(0.9,-0.2); 
+\draw [thick] (O) ++(-0.45,-0.433013) -- ++(0.9,0); 
+\draw (O) -- ++(-0.25,-0.433013) -- ++(0.45,0) -- cycle; 
+\end{scope} 
+ } 
+% definicion apoyo de primer genero 
+% #1: ubicación del apoyo 
+% #2: angulo de rotacion 
+ \newcommand{\apoyopri}[2]{ 
+\coordinate (O) at #1; 
+\begin{scope}[rotate around={#2:(O)}] 
+\fill [black!10](O) ++(-0.45,-0.433013) rectangle ++(0.9,-0.2); 
+\draw [thick] (O) ++(-0.45,-0.433013) -- ++(0.9,0); 
+\draw (O) ++(0,-0.216506) circle (0.216506); 
+\end{scope} 
+ } 
+% definicion carga puntual 
+% #1: ubicación de la carga 
+% #2: rótulo de la carga 
+% #3=1: carga positiva, #3=-1: carga negativa 
+% #4=1,#5=0: carga en x, #4=0,#5=1: carga en y 
+% #6=0: carga entrando al nudo, #6=1: carga saliendo del nudo 
+% #7: ubicación del rótulo de la carga 
+\newcommand{\cargapun}[7]{ 
+\path #1 ++(#6*#4,#6*#5) coordinate (O); 
+\draw [carga] (O) -- ++(-1.0*#3*#4,-1.0*#3*#5) 
+node [#7] {#2}; 
+ } 
+% definición de carga distribuida 
+% #1: ubicación del nudo inicial del elemento 
+% #2: ubicación del nudo final del elemento 
+% #3: componentes de un vector en y-local de norma 0.5 
+% #4: etiqueta de la carga 
+% #5: ubicación de la etiqueta de la carga 
+\newcommand{\cargadis}[5]{ 
+\coordinate (I) at #1; 
+\coordinate (F) at #2; 
+\coordinate (N) at #3; 
+\draw[fill=orange!20,opacity=0.5] (I)++(N)--(I)--(F)--++(N)--cycle 
+node[#5,opacity=1.0] {#4}; 
+  } 
+% cota horizontal 
+% #1: coordenada punto inicial () 
+% #2: coordenada punto final () 
+% #3: rotulo de la cota 
+% #4: separación entre puntos y cota 
+% #5: separación entre puntos y inicio de marcas 
+% #6: separación entre cota y fin de marcas 
+\newcommand{\cotahori}[6]{ 
+\path #1 ++(0,#4) coordinate (A); 
+\path #2 ++(0,#4) coordinate (B); 
+\draw [latex-latex] (A) -- (B) 
+node [midway,fill=white] {#3}; 
+\path #1 ++(0,#5) coordinate (C); 
+\path #1 ++(0,#4+#6) coordinate (D); 
+\draw (C) -- (D); 
+\path #2 ++(0,#5) coordinate (C); 
+\path #2 ++(0,#4+#6) coordinate (D); 
+\draw (C) -- (D); 
+ } 
+% cota vertical 
+% #1: coordenada punto inicial () 
+% #2: coordenada punto final () 
+% #3: rotulo de la cota 
+% #4: separación entre puntos y cota 
+% #5: separación entre puntos y inicio de marcas 
+% #6: separación entre cota y fin de marcas 
+\newcommand{\cotavert}[6]{ 
+\path #1 ++(#4,0) coordinate (A); 
+\path #2 ++(#4,0) coordinate (B); 
+\draw [latex-latex] (A) -- (B) 
+node [midway,fill=white] {#3}; 
+\path #1 ++(#5,0) coordinate (C); 
+\path #1 ++(#4+#6,0) coordinate (D); 
+\draw (C) -- (D); 
+\path #2 ++(#5,0) coordinate (C); 
+\path #2 ++(#4+#6,0) coordinate (D); 
+\draw (C) -- (D); 
+ } 
+% dibujar apoyos 
+\apoyoemz{(12.000000,-7.200000,7.200000)}{1} 
+\apoyoemz{(0.000000,-7.200000,0.000000)}{1} 
+\apoyoemz{(0.000000,0.000000,7.200000)}{1} 
+% dibujar elementos 
+\tikzstyle{elem}=[double distance = 0.1cm,line cap=round]; 
+\tikzstyle{elet}=[black,midway,above]; 
+\tikzstyle{mat1}=[double=black!20]; 
+\tikzstyle{mat2}=[double=red!20]; 
+\tikzstyle{mat3}=[double=green!30]; 
+\tikzstyle{mat4}=[double=blue!40]; 
+\begin{scope} 
+\draw[elem,mat2] (0.000000,-7.200000,7.200000)--(12.000000,-7.200000,7.200000) node[elet] {1}; 
+\draw[elem,mat3] (0.000000,0.000000,7.200000)--(0.000000,-7.200000,7.200000) node[elet] {2}; 
+\draw[elem,mat1] (0.000000,-7.200000,0.000000)--(0.000000,-7.200000,7.200000) node[elet] {3}; 
+\end{scope} 
+% dibujar nudos 
+\tikzstyle{nudo}=[fill=black]; 
+\tikzstyle{nudt}=[above=0.1cm]; 
+\def \r{0.03cm}; 
+\begin{scope} 
+\draw[nudo] (0.000000,-7.200000,7.200000) circle (\r) node[nudt] {1}; 
+\draw[nudo] (12.000000,-7.200000,7.200000) circle (\r) node[nudt] {2}; 
+\draw[nudo] (0.000000,-7.200000,0.000000) circle (\r) node[nudt] {3}; 
+\draw[nudo] (0.000000,0.000000,7.200000) circle (\r) node[nudt] {4}; 
+\end{scope} 
+% dibujar ejes 
+\draw (0,0,0)--(1,0,0) node[right] {$x$}; 
+\draw (0,0,0)--(0,1,0) node[right] {$y$}; 
+\draw (0,0,0)--(0,0,1) node[left] {$z$}; 
+% dibujar cargas puntuales 
+% dibujar cargas distribuidas uniformes 
+\cargadis{(0.000000,-7.200000,7.200000)}{(12.000000,-7.200000,7.200000)}{(-0.000000,0.000000,0.500000)}{24.000000}{midway,above} 
+\cargadis{(0.000000,0.000000,7.200000)}{(0.000000,-7.200000,7.200000)}{(0.000000,0.000000,0.500000)}{35.000000}{midway,above} 
+\end{tikzpicture} 
+\end{center} 
+\end{document} 

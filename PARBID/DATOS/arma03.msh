@@ -1,0 +1,34 @@
+$MeshFormat
+2.2 0 8
+$EndMeshFormat
+$PhysicalNames
+6
+0 1 "DISP UX=0 UY=0"
+0 2 "DISP UY=0"
+0 3 "LOAD FX=100 FY=-50"
+0 4 "LOAD FY=-50"
+1 5 "CATE EYOU=200E6 AREA=0.002"
+1 6 "CATE EYOU=200E6 AREA=0.001"
+$EndPhysicalNames
+$Nodes
+5
+1 0 0 0
+2 6 0 0
+3 12 0 0
+4 3 4 0
+5 9 4 0
+$EndNodes
+$Elements
+11
+1 15 2 1 1 1
+2 15 2 2 3 3
+3 15 2 3 4 4
+4 15 2 4 5 5
+5 1 2 5 1 1 2
+6 1 2 5 2 2 3
+7 1 2 5 3 4 5
+8 1 2 6 4 1 4
+9 1 2 6 5 4 2
+10 1 2 6 6 2 5
+11 1 2 6 7 5 3
+$EndElements

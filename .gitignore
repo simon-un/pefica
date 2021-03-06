@@ -2,6 +2,6 @@
 
 .DS_Store # archivos del sistema
 octave-workspace # archivo generado automáticamente por Octave
-**/*.msh # archivos de malla autogenerados por gmsh
+*.msh # archivos de malla autogenerados por gmsh
 *.aux # archio auxiliar de latex
 *.log # archivo auxiliar de latex
