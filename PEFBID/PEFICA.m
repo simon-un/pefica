@@ -145,7 +145,7 @@ fprintf('------------------------------------------------------------------\n');
   % GL conocidos NGLC.
   [MGL,UBB,NGLN,NGLC] = NGLUCO(UCO,NNUD);
   NGLT = NNUD*NGLN;  % número de grados de libertad del sólido
-  NGLD = NGLT-NGLC;  % número de grados de libertad conocidos
+  NGLD = NGLT-NGLC;  % número de grados de libertad desconocidos
   % Se crea la tabla de GLs por elemento o matriz de incidencias
   [INC] = NGLELE(ELE,MGL);
   TFIN = IMTIEM('',TINI);

@@ -9,9 +9,9 @@ NDIM = 2;    % número de dimensiones
 NCAT = 1;    % número de categorias de elementos
 TIPR = 20;   % código del tipo de problema:
              % 20: plano de esfuerzos, 21: plano de deformaciones
-ENNU = 1;    % tipo de evaluación de esfuerzos/deformaciones en el elemento
+ENNU = 0;    % tipo de evaluación de esfuerzos/deformaciones en el elemento
              % 0: eval en PG, 1: eval en los nudos, 2: eval en centro del elemen
-IMPR = 2;    % tipo de impresión de los resultados
+IMPR = 1;    % tipo de impresión de los resultados
              % 0: ninguno, 1: en ventana de comandos, 2: en GiD, 
              % 3: en VC, GiD y Tikz LaTeX
              % 4: en Tikz LaTeX
