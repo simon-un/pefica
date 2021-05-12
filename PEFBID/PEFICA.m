@@ -183,7 +183,7 @@ fprintf('------------------------------------------------------------------\n');
   KBB = KGS(NGLD+1:NGLT,NGLD+1:NGLT);  % submatriz K_{beta,beta}
   TFIN = IMTIEM('',TINI);
   
-  TINI = IMTIEM('Vectores de fuerzas en los nudos del solido ',0);
+  TINI = IMTIEM('Vectores de fuerzas en los nudos ',0);
   % Vector de fuerzas equivalentes a la acción del peso propio en el solido
   % -------------------------------------------------------------------------
   FGC = zeros(NGLT,1); % definición de tamaño del vector de fuer cuerp sólido
@@ -243,7 +243,7 @@ fprintf('------------------------------------------------------------------\n');
   FAA = FGT(1:NGLD,1); % subvec.fuer.totales conocidas alpha, entre 1<=GL<=NGLD
   TFIN = IMTIEM('',TINI);
   
-  TINI = IMTIEM('Desplazamientos y fuerzas totales en los nudos del solido ',0);
+  TINI = IMTIEM('Desplazamientos y fuerzas totales en los nudos ',0);
   % Desplazamientos en los nudos del sólido
   % -------------------------------------------------------------------------
   % solución de un sistema de ecuaciones simultaneas para obtener el
@@ -350,7 +350,7 @@ fprintf('------------------------------------------------------------------\n');
   end % endif
   
   if (IMPR==2 || IMPR==3)
-    TINI = IMTIEM('Impresión de resultados en GiD (.gid.msh y .gid.res) ',0);
+    TINI = IMTIEM('Archivo de resultados en GiD (.gid.msh y .gid.res) ',0);
     % -----------------------------------------------------------------------
     ADAD = strcat('./DATOS/',ADAT);
     IMGIDM(ADAD,NNUD,NELE,NNUE,XYZ,ELE); % imprimir archivo de GiD .gid.msh
@@ -370,7 +370,7 @@ fprintf('------------------------------------------------------------------\n');
   end % endif IMPR
   
   if (IMPR==5)
-    TINI = IMTIEM('Presentacion de resultados en GMSH (.pos y .pos.opt) ',0);
+    TINI = IMTIEM('Archivo de resultados en GMSH (.pos y .pos.opt) ',0);
     % -----------------------------------------------------------------------
     ADAD = strcat('./DATOS/',ADAT);
     % imprimir GMSH .pos y .pos.opt
@@ -385,5 +385,5 @@ fprintf('------------------------------------------------------------------\n');
   end % endif
   
   % mostrar tiempo final
-  TFIN = IMTIEM('Tiempo total de ejecucion del programa                      ',TINT);
+  TFIN = IMTIEM('Tiempo total de ejecucion del programa          ',TINT);
 end

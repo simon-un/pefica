@@ -9,7 +9,7 @@ function TFIN = IMTIEM(TEXT,TINI)
   if TINI==0
     % imprimir texto del comienzo de un grupo de instrucciones
     % y medir el tiempo inicial
-    fprintf('%-60s',TEXT);
+    fprintf('%-48s',TEXT);
     TFIN = clock(); % tiempo al comienzo de las instrucciones
   else
     % imprimir el tiempo empleado entre el comienzo y el final 
