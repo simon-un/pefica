@@ -19,8 +19,8 @@ function TFIN = IMTIEM(TEXT,TINI)
   end % endswitch
   % alternativa de presentación paso a paso de mensajes que solo funciona
   % en octave
-  fflush(stdout);
+  % fflush(stdout);
   % presentación paso a paso de mensajes que funciona en matlab 
-  %drawnow('expose');
+  drawnow('expose');
   
 end
