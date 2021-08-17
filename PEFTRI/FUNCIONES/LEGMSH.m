@@ -156,6 +156,14 @@ function [NNUD,NELE,NNUE,NGAU,NDIM,NCAT,TIPR,ENNU,IMPR,...
         NCOM=NCOM-3; % número de componentes en la línea
         TEMP=char(TFIS{3}); % palabra clave etiqueta ent física
         
+        % control de error cuando la palabra de la entidad física es menor a
+        % 4 caracteres y en consecuencia es un nombre incorrecto
+        if size(TEMP,2)<5
+          fprintf('\n');
+          EMSG = sprintf('%s" es un nombre incorrecto de entidad fisica.',TEMP);
+          error (EMSG);
+        end % endif
+        
         % entidad física tipo desplazamiento
         if (strcmp(TEMP(1:5),'"DISP')==1)
           ICOBO=ICOBO+1; % contador de entidades físicas de condic de borde
@@ -164,6 +172,10 @@ function [NNUD,NELE,NNUE,NGAU,NDIM,NCAT,TIPR,ENNU,IMPR,...
                               % 10=tipo desplazamiento
           for ICOM=1:NCOM
             TEMR=strsplit(TFIS{3+ICOM},{'=','"'});
+            if size(str2num(TEMR{2}),1)==0
+              error ('Valor incorrecto de desplazamiento en la entidad fisica DISP.');
+            end %endif
+            
             % desplazamiento conocido en x
             if (strcmp(TEMR{1},'UX')==1)
               FCOBO(ICOBO,3)=1; % indicador desplazamiento en x
@@ -196,6 +208,9 @@ function [NNUD,NELE,NNUE,NGAU,NDIM,NCAT,TIPR,ENNU,IMPR,...
                               % 20=tipo carga puntual
           for ICOM=1:NCOM
             TEMR=strsplit(TFIS{3+ICOM},{'=','"'});
+            if size(str2num(TEMR{2}),1)==0
+              error ('Valor incorrecto de fuerza en la entidad fisica LOAD.');
+            end %endif
             % carga conocida en x
             if (strcmp(TEMR{1},'FX')==1)
               FCOBO(ICOBO,3)=1; % indicador carga en x
@@ -229,6 +244,9 @@ function [NNUD,NELE,NNUE,NGAU,NDIM,NCAT,TIPR,ENNU,IMPR,...
           SUMG=0;SUML=0;SUMW=0;
           for ICOM=1:NCOM
             TEMR=strsplit(TFIS{3+ICOM},{'=','"'});
+            if size(str2num(TEMR{2}),1)==0
+              error ('Valor incorrecto de presión en la entidad fisica PRES.');
+            end %endif
             % carga conocida en x
             if (strcmp(TEMR{1},'WX')==1)
               FCOBO(ICOBO,3)=str2num(TEMR{2}); % valor
@@ -290,6 +308,9 @@ function [NNUD,NELE,NNUE,NGAU,NDIM,NCAT,TIPR,ENNU,IMPR,...
           FCATE(ICATE,1)=str2num(TFIS{2}); % id entidad física
           for ICOM=1:NCOM
             TEMR=strsplit(TFIS{3+ICOM},{'=','"'});
+            if size(str2num(TEMR{2}),1)==0
+              error ('Valor incorrecto de categoría en la entidad fisica CATE.');
+            end %endif
             % módulo de Young
             if (strcmp(TEMR{1},'EYOU')==1)
               FCATE(ICATE,2)=str2num(TEMR{2}); % valor
@@ -330,7 +351,9 @@ function [NNUD,NELE,NNUE,NGAU,NDIM,NCAT,TIPR,ENNU,IMPR,...
            (strcmp(TEMP(1:5),'"LOAD')==0) && ...
            (strcmp(TEMP(1:5),'"PRES')==0) && ...
            (strcmp(TEMP(1:5),'"CATE')==0))
-           error ('Nombre incorrecto de entidad fisica');
+           fprintf('\n');
+           EMSG = sprintf('%s" es un nombre incorrecto de entidad fisica.',TEMP);
+           error (EMSG);
         end %endif
         
       end % endfor IFIS

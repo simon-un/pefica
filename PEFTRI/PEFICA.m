@@ -35,7 +35,7 @@ fprintf('     GMSH, esfuerzos y deformaciones en el interior de eleme PRO=1\n');
 fprintf('=12: lectura datos de .msh de GMSH y escritura resultados en \n');
 fprintf('     .pos de GMSH esfuerzos y deformaciones promedio en nudos \n');
 fprintf('     para varias categorías de material y espesor PRO=2.\n');
-fprintf('     Adicionalmente se imprime en la ventana las reacciones.\n');
+fprintf('     Adicionalmente se imprime archivo .tbl con las reacciones.\n');
 fprintf('=13: lectura datos de .msh de GMSH y escritura resultados en \n');
 fprintf('     .pos de GMSH esfuerzos y deformaciones en el interior de \n');
 fprintf('     los elementos para varias categorías PRO=3\n');
@@ -45,7 +45,6 @@ fprintf('     para varias categorías de material y espesor PRO=4\n');
 fprintf('=20,21,22,23,24: lectura datos de .geo de GMSH, generación de malla y del\n');
 fprintf('     archivo .msh realizada de forma remota por GMSH, y escritura de\n');
 fprintf('     resultados en archivo .pos de GMSH, calculando como 10,11,12,13,14\n');
-fprintf('     promedio en nudos para una categoría de material y espesor PRO=0\n');
 fprintf('=07: lectura datos de archivo .m y escritura resultados en\n');
 fprintf('     .pos de GMSH esfuerzos y deformaciones en el interior\n'); 
 fprintf('     de eleme PRO=1\n');
@@ -67,8 +66,7 @@ fprintf('------------------------------------------------------------------\n');
   % adicionar carpetas y tomar tiempo inicial
   addpath('./FUNCIONES');
   addpath('./DATOS'); 
-  fprintf('Inicio de ejecucion del programa \n');
-  TINT = clock();
+  TINT = IMTIEM('Inicio de ejecucion del programa \n',0);
   
   % lectura de archivo de entrada de datos
   % -------------------------------------------------------------------------
@@ -94,7 +92,8 @@ fprintf('------------------------------------------------------------------\n');
     end % endif
   
     % opción de lectura de entrada de datos de archivo .msh de GMSH
-    TINI = IMTIEM('Lectura de datos de entrada de archivo .msh de GMSH ',0);
+    LECA = sprintf('Lectura de datos de entrada de archivo %s.msh de GMSH ', ADAT);
+    TINI = IMTIEM(LECA,0);
     [NNUD,NELE,NNUE,NGAU,NDIM,NCAT,TIPR,ENNU,IMPR,...
      XYZ,ELE,CAT,UCO,FUN,FDI,SUP] = LEGMSH(ADAD);
         
@@ -134,30 +133,80 @@ fprintf('------------------------------------------------------------------\n');
   fprintf('Malla de %g nudos, %g elementos y %g GLs\n', NNUD,NELE,NGLT);
   % Se crea la tabla de GLs por elemento o matriz de incidencias
   
-  TINI = IMTIEM('Matriz de rigidez del solido ',0);
+  TINI = IMTIEM('Matriz de rigidez del solido\n',0);
   % -------------------------------------------------------------------------
-  KGS = zeros(NGLT,NGLT); % definición de tamaño de la matriz de rigidez sólido
-  for IELE = 1:NELE
-    
-    % matriz de rigidéz de elemento
-    CAE(1:PCAT) = CAT(ELE(IELE,1),1:PCAT); % propiedades de la categ eleme IELE
-    NUEL = CAE(1,PMAT+3);  % número de nudos del elemento IELE
-    XYE(1:NUEL,1:NDIM) = XYZ(ELE(IELE,2:NUEL+1),1:NDIM); % coor nud de elem IELE
-    [KEL] = KELEME(TIPR,XYE,CAE); % matriz de rigidez del elem IELE
-   
-    % ensamblaje de KEL() del elemento IELE en KGS() del sólido
-    NKEL = size(KEL,1); % tamaño de la matriz de rigidez del elemento
-    for IKEL=1:NKEL
-      for JKEL=1:NKEL
-        if ( INC(IELE, IKEL) ~= 0 & INC(IELE, JKEL) ~= 0)
-          KGS(INC(IELE, IKEL), INC(IELE, JKEL)) = ...
-          KGS(INC(IELE, IKEL), INC(IELE, JKEL)) + KEL(IKEL, JKEL);
-        end % endif
-      end % endfor JKEL
-    end % endfor IKEL
-    % fin del ensamblaje
-    
-  end
+  
+  % control interno del tipo de matriz de rigidez ensamblada:
+  % LSIZ=0: matriz llena que funciona hasta 15,000 nudos
+  % LSIZ=1: matriz sparse para problemas de más de 15,000 nudos
+  
+  LSIZ=0;
+  if NNUD>15000;
+    LSIZ=1;
+  end % endif
+  
+  switch LSIZ
+  
+    case 0
+    % ensamblaje convensional de la matriz de rigidez, el cual tiene una 
+    % capacidad máxima de 45,000 grados de libertad
+    %
+    fprintf('ensamblaje convensional de la matriz de rigidez llena ');
+    KGS = zeros(NGLT,NGLT); % definición de tamaño de la matriz de rigidez sólido
+    for IELE = 1:NELE
+      % matriz de rigidéz de elemento
+      CAE(1:PCAT) = CAT(ELE(IELE,1),1:PCAT); % propiedades de la categ eleme IELE
+      NUEL = CAE(1,PMAT+3);  % número de nudos del elemento IELE
+      XYE(1:NUEL,1:NDIM) = XYZ(ELE(IELE,2:NUEL+1),1:NDIM); % coor nud de elem IELE
+      [KEL] = KELEME(TIPR,XYE,CAE); % matriz de rigidez del elem IELE
+     
+      % ensamblaje de KEL() del elemento IELE en KGS() del sólido
+      NKEL = size(KEL,1); % tamaño de la matriz de rigidez del elemento
+      for IKEL=1:NKEL
+        for JKEL=1:NKEL
+          if ( INC(IELE, IKEL) ~= 0 & INC(IELE, JKEL) ~= 0)
+            KGS(INC(IELE, IKEL), INC(IELE, JKEL)) = ...
+            KGS(INC(IELE, IKEL), INC(IELE, JKEL)) + KEL(IKEL, JKEL);
+          end % endif
+        end % endfor JKEL
+      end % endfor IKEL
+      % fin del ensamblaje
+    end
+  
+    case 1
+    % ensamblaje de una matriz de rigidez tipo sparse, la cual tiene una
+    % capacidad máxima aproximanda de 300,000 grados de libertad y 
+    % 2,700,000 elementos tetrahédicos.
+    %
+    fprintf('ensamblaje de la matriz de rigidez tipo sparse ');
+    IKGS = 0;
+    KGV = zeros(1,1,'double');
+    for IELE = 1:NELE
+      % matriz de rigidéz de elemento
+      CAE(1:PCAT) = CAT(ELE(IELE,1),1:PCAT); % propiedades de la categ eleme IELE
+      NUEL = CAE(1,PMAT+3);  % número de nudos del elemento IELE
+      XYE(1:NUEL,1:NDIM) = XYZ(ELE(IELE,2:NUEL+1),1:NDIM); % coor nud de elem IELE
+      [KEL] = KELEME(TIPR,XYE,CAE); % matriz de rigidez del elem IELE tipo llena
+     
+      % ensamblaje de KEL() del elemento IELE en KGS() del sólido
+      NKEL = size(KEL,1); % tamaño de la matriz de rigidez del elemento
+      for IKEL=1:NKEL
+        for JKEL=1:NKEL
+          if (INC(IELE, IKEL) ~= 0 & INC(IELE, JKEL) ~= 0)
+            IKGS = IKGS + 1;
+            KGF(IKGS) = INC(IELE, IKEL);
+            KGC(IKGS) = INC(IELE, JKEL);
+            KGV(IKGS) = KEL(IKEL, JKEL);
+          end % endif
+        end % endfor JKEL
+      end % endfor IKEL
+    end
+    % construcción de la matriz sparse de rigidez
+    % si dos ubicaciones coinciden la función sparse suma los términos   
+    KGS = sparse(KGF,KGC,KGV);
+
+  end % endswitch
+  
   % submatrices de rigidez del sólido
   KAA = KGS(1:NGLD,1:NGLD);            % submatriz K_{alpha,alpha}
   KAB = KGS(1:NGLD,NGLD+1:NGLT);       % submatriz K_{alpha,beta}
@@ -229,19 +278,31 @@ fprintf('------------------------------------------------------------------\n');
   FAA = FGT(1:NGLD,1); % subvec.fuer.totales conocidas alpha, entre 1<=GL<=NGLD
   TFIN = IMTIEM('',TINI);
   
-  TINI = IMTIEM('Desplazamientos y reacciones en los nudos del solido ',0);
+  TINI = IMTIEM('Desplazamientos y reacciones en los nudos del solido\n',0);
   % Desplazamientos en los nudos del sólido
   % -------------------------------------------------------------------------
   % solución de un sistema de ecuaciones simultaneas para obtener el
   % subvector de desplazamientos nodales desconocidos u_{alpha}
   
-  % solución para matrices no simétricas (mayor tiempo de ejecución)
+  % solución para matrices no simétricas método de Gauss-Jordan (mayor tiempo de ejecución)
   % UAA = (KAA) \ (FAA - KAB * UBB);
   
   % solución para matrices simétricas (menor tiempo de ejecución)
   AUX = FAA - KAB * UBB;
-  opts.SYM = true;
-  UAA = linsolve(KAA,AUX,opts); 
+  switch LSIZ
+    case 0
+      % solución del sistema de ecuaciones simultáneas mediante 
+      % el método de Cholesky aplicado a la matriz de rigidez llena
+      fprintf('solución sistema método Cholesky ');
+      opts.SYM = true;
+      UAA = linsolve(KAA,AUX,opts);
+    case 1
+      % solución del sistema de ecuaciones simultáneas mediante
+      % el método iterativo de los gradientes conjugados aplicado
+      % a la matriz de rigidez tipo sparse
+      fprintf('solución sistema método gradientes conjugados\n');
+      UAA = pcg(KAA,AUX,1e-6,1000);
+  end % endswitch
   
   UTO = [ UAA ; UBB ]; % vector de desplaz. nodales completo
   [UXY] = ORVETA(UTO,MGL); % tabla de desplaz. nodales en formato UX,UY
@@ -263,7 +324,7 @@ fprintf('------------------------------------------------------------------\n');
     FNA = FGN(1:NGLD,1); % subvec.fuer.conocidas en los nudos alpha, entre 1<=GL<=NGLD
     FNT = [ FNA ; FNB ]; % vector de fuerzas en los nudos
     [FNX] = ORVETA(FNT,MGL); % tabla de fuerzas nodales (reacciones) en formato FX,FY,FZ
-    IMTBXY(FNX,'\nFuerzas directamente en los nudos (reacciones)\n',...
+    IMTBXY(ADAD,FNX,'\nFuerzas directamente en los nudos (reacciones)\n',...
           '  nudo          fx          fy          fz\n');
   end % endif
   
@@ -279,21 +340,22 @@ fprintf('------------------------------------------------------------------\n');
   ERE = zeros(NELE*NEVA,NCOM+5); % crear tabla de deformaci por elemento en Gmsh
   IRES = 0; % índice de la tabla de esfuerzos y deformaciones para Gmsh
   
-  for IELE = 1:NELE % ciclo por elemento
-    NUEL = CAT(ELE(IELE,1),6); % número de nudos del elemento
-    NGLE = NUEL*NGLN; % número de GL por elemento
-    UEL = EXTRAV(UTO,INC,IELE,NGLE); % vector de despl nodales del elemento
+  % separar procedimiento para mallas de solo tetraedros lineales con el 
+  % fin de reducir el tiempo de cálculo
+  if NNUE==4
     
-    TIPE = CAT(ELE(IELE,1),5); % código tipo del elemento    
-    XYE(1:NUEL,1:NDIM) = XYZ(ELE(IELE,2:NUEL+1),1:NDIM); % coor nud de elem IELE
-    CAE = CAT(ELE(IELE,1),:); % propiedades de la categ eleme IELE
-    [DEL] = DELEME(CAE,TIPR); % matriz constitutiva del material    
-    [TEM] = PBPGAU(NEVA, NDIM, ENNU); % ubicación y ponder de puntos de Gauss
-    POIS = CAE(2);  % relación de Poisson
+    % cuando la la malla solo tiene elementos tetraedros lineales
     
-    for IEVA = 1:NEVA % ciclo por punto de Gauss o por nudo
-      XYP = TEM(IEVA,1:2); % ubicación de puntos de Gauss o por nudos
-      % fprintf('elemento %g en el punto %g: \n',IELE,IEVA);
+    % definiciones
+    NUEL = 4; % número de nudos del elemento
+    NGLE = 12; % número de GL por elemento
+    TIPE = 301; % código tipo del elemento 
+    XYP = 0; % ubicación de los PG (variable dummy)
+    for IELE = 1:NELE % ciclo por elemento
+      UEL = EXTRAV(UTO,INC,IELE,NGLE); % vector de despl nodales del elemento
+      XYE(1:NUEL,1:NDIM) = XYZ(ELE(IELE,2:NUEL+1),1:NDIM); % coor nud de elem IELE
+      CAE = CAT(ELE(IELE,1),:); % propiedades de la categ eleme IELE
+      [DEL] = DELEME(CAE,TIPR); % matriz constitutiva del material    
       BEL = BELEME(XYE,XYP,TIPE); % matriz B en el punto de Gauss o nudo IGAU
       % vector de deformaciones del elem. IELE en el punto IGAU
       % EPE = [ EXX, EYY, EZZ, GXY, GXZ, GYZ ]
@@ -301,53 +363,121 @@ fprintf('------------------------------------------------------------------\n');
       % vector de esfuerzos del elem. IELE en el punto IGAU
       % STE = [ SXX, SYY, SZZ, SXY, SXZ, SYZ ]
       STE = DEL * EPE;
-      
+        
       % esfuerzos y deformac principales y esfuerzo de von Mises para 3D
       [SPR,STVM] = TRPRIN(STE,0); % vector esfuerzo principal y esf VM
       [EPR,DUMY] = TRPRIN(EPE,1); % vector de deformac principales
+    
+      for IEVA = 1:NNUE % ciclo por nudo  
+        % preparar tabla de esfuerzos y de deformaciones por elemento
+        % con elemento de valor constante en su interior
+        IRES = IRES+1; % ubicación del resultado en la tabla SRE() o ERE()
+          
+        % número del elemento IELE
+        SRE(IRES,1) = IELE;
+        ERE(IRES,1) = IELE;
+        % número del nudo
+        SRE(IRES,2) = ELE(IELE,IEVA+1);
+        ERE(IRES,2) = ELE(IELE,IEVA+1);
+
+        % componentes de esfuerzo y de deformación
+        SRE(IRES,3:8) = STE'; % esfuerzos SXX, SYY, SZZ, SXY, SXZ, SYZ
+        ERE(IRES,3:8) = EPE'; % deformaciones EXX, EYY, EZZ, EXY, EXZ, EYZ
+        % esfuerzos o deformaciones principales
+        SRE(IRES, 9:11) = SPR'; % tabla esf.princ SP1,SP2,SP3
+        ERE(IRES, 9:11) = EPR'; % tabla defor.princ EP1,EP2,EP3
+        % esfuerzo de von Mises
+        SRE(IRES, 12) = STVM;
+        
+      end % endfor IEVA
       
-      % preparar tabla de esfuerzos y de deformaciones por elemento para GiD
-      % con elemento de valor constante en su interior
-      IRES = IRES+1; % ubicación del resultado en la tabla SRE() o ERE()
+    end % endfor IELE  
+ 
+  else 
+    
+    % cuando la malla tiene elementos de diferente tipo
+    for IELE = 1:NELE % ciclo por elemento
+      NUEL = CAT(ELE(IELE,1),6); % número de nudos del elemento
+      NGLE = NUEL*NGLN; % número de GL por elemento
+      UEL = EXTRAV(UTO,INC,IELE,NGLE); % vector de despl nodales del elemento
       
-      SRE(IRES,1) = IELE; % tabla de esfuerzos, número del elemento IELE
-      ERE(IRES,1) = IELE; % tabla de deformaci, número del elemento IELE
-      if ENNU==0
-        % evaluación en puntos de Gauss
-        SRE(IRES,2) = IEVA; % tabla de esfuerzos, número del PG
-        ERE(IRES,2) = IEVA; % tabla de deformaci, número del PG
-      elseif ENNU==1
-        % evaluación en los extremos de cada elemento
-        SRE(IRES,2) = ELE(IELE,IEVA+1); % tabla de esfuerzo, número del nudo
-        ERE(IRES,2) = ELE(IELE,IEVA+1); % tabla de deformac, número del nudo
-      elseif ENNU==2
-        % evaluación en el centro
-        SRE(IRES,2) = 0; % tabla de esfuerzo, 0 indica el centro
-        ERE(IRES,2) = 0; % tabla de deformac, 0 indica el centro       
-      end % endif
+      TIPE = CAT(ELE(IELE,1),5); % código tipo del elemento    
+      XYE(1:NUEL,1:NDIM) = XYZ(ELE(IELE,2:NUEL+1),1:NDIM); % coor nud de elem IELE
+      CAE = CAT(ELE(IELE,1),:); % propiedades de la categ eleme IELE
+      [DEL] = DELEME(CAE,TIPR); % matriz constitutiva del material    
+      [TEM] = PBPGAU(NEVA, NDIM, ENNU); % ubicación y ponder de puntos de Gauss
+      POIS = CAE(2);  % relación de Poisson
       
-      for ICOM = 1:NCOM % componente de esfuerzo leida
-          SRE(IRES, ICOM+2) = STE(ICOM, 1); % tab esfue SXX, SYY, SZZ, SXY, SXZ, SYZ
-          ERE(IRES, ICOM+2) = EPE(ICOM, 1); % tab defor EXX, EYY, EZZ, GXY, GXZ, GYZ
-      end % endfor ICOM
-      for JCOM = 1:3 % esfuerzos o deformaciones principales
-          SRE(IRES, JCOM+NCOM+2) = SPR(JCOM, 1); % tabla esf.princ SP1,SP2,SP3
-          ERE(IRES, JCOM+NCOM+2) = EPR(JCOM, 1); % tabla defor.princ EP1,EP2,EP3
-      end % endfor JCOM
-      SRE(IRES, NCOM+6) = STVM; % esfuerzo de von Mises
-      
-    end % endfor IEVA
-  end % endfor IELE
+      for IEVA = 1:NEVA % ciclo por punto de Gauss o por nudo
+        XYP = TEM(IEVA,1:2); % ubicación de puntos de Gauss o por nudos
+        % fprintf('elemento %g en el punto %g: \n',IELE,IEVA);
+        BEL = BELEME(XYE,XYP,TIPE); % matriz B en el punto de Gauss o nudo IGAU
+        % vector de deformaciones del elem. IELE en el punto IGAU
+        % EPE = [ EXX, EYY, EZZ, GXY, GXZ, GYZ ]
+        EPE = BEL * UEL;
+        % vector de esfuerzos del elem. IELE en el punto IGAU
+        % STE = [ SXX, SYY, SZZ, SXY, SXZ, SYZ ]
+        STE = DEL * EPE;
+        
+        % esfuerzos y deformac principales y esfuerzo de von Mises para 3D
+        [SPR,STVM] = TRPRIN(STE,0); % vector esfuerzo principal y esf VM
+        [EPR,DUMY] = TRPRIN(EPE,1); % vector de deformac principales
+        
+        % preparar tabla de esfuerzos y de deformaciones por elemento para GiD
+        % con elemento de valor constante en su interior
+        IRES = IRES+1; % ubicación del resultado en la tabla SRE() o ERE()
+        
+        SRE(IRES,1) = IELE; % tabla de esfuerzos, número del elemento IELE
+        ERE(IRES,1) = IELE; % tabla de deformaci, número del elemento IELE
+        if ENNU==0
+          % evaluación en puntos de Gauss
+          SRE(IRES,2) = IEVA; % tabla de esfuerzos, número del PG
+          ERE(IRES,2) = IEVA; % tabla de deformaci, número del PG
+        elseif ENNU==1
+          % evaluación en los extremos de cada elemento
+          SRE(IRES,2) = ELE(IELE,IEVA+1); % tabla de esfuerzo, número del nudo
+          ERE(IRES,2) = ELE(IELE,IEVA+1); % tabla de deformac, número del nudo
+        elseif ENNU==2
+          % evaluación en el centro
+          SRE(IRES,2) = 0; % tabla de esfuerzo, 0 indica el centro
+          ERE(IRES,2) = 0; % tabla de deformac, 0 indica el centro       
+        end % endif
+        
+        for ICOM = 1:NCOM % componente de esfuerzo leida
+            SRE(IRES, ICOM+2) = STE(ICOM, 1); % tab esfue SXX, SYY, SZZ, SXY, SXZ, SYZ
+            ERE(IRES, ICOM+2) = EPE(ICOM, 1); % tab defor EXX, EYY, EZZ, GXY, GXZ, GYZ
+        end % endfor ICOM
+        for JCOM = 1:3 % esfuerzos o deformaciones principales
+            SRE(IRES, JCOM+NCOM+2) = SPR(JCOM, 1); % tabla esf.princ SP1,SP2,SP3
+            ERE(IRES, JCOM+NCOM+2) = EPR(JCOM, 1); % tabla defor.princ EP1,EP2,EP3
+        end % endfor JCOM
+        SRE(IRES, NCOM+6) = STVM; % esfuerzo de von Mises
+        
+      end % endfor IEVA
+    end % endfor IELE
+    
+  end % endif NNUE
+  
   TFIN = IMTIEM('',TINI);
 
   % Presentación de resultados
   % ------------------------------------------------------------------------- 
   if IMPR==5
-    TINI = IMTIEM('Presentacion de resultados en GMSH (.pos y .pos.opt) ',0);
+    TINI = IMTIEM('Archivos de resultados para GMSH .pos y .pos.opt ',0);
     % -----------------------------------------------------------------------
+    % tabla de fuerzas equivalentes + fuerzas directamente en nudos
+    % en formato FX,FY,FZ
+    [FGX] = ORVETA(FGT,MGL);
+    
     ADAD = strcat('./DATOS/',ADAT);
-    % imprimir GMSH .pos y .pos.opt
-    IMGMSH(ADAD,NNUD,NELE,NNUE,NGAU,NCAT,XYZ,ELE,SUP,UXY,FXY,SRE,ERE,PRO);
+    
+    % imprimir GMSH .pos y .pos.opt en formato ASCII v2
+    IMGMSH(ADAD,NNUD,NELE,NNUE,NGAU,NCAT,XYZ,ELE,SUP,UXY,FGX,SRE,ERE,PRO,UCO);
+    
+    % imprimir GMSH .pos y .pos.opt en formato binario
+    %IMGMBI(ADAD,NNUD,NELE,NNUE,NGAU,NCAT,XYZ,ELE,SUP,UXY,FGX,SRE,ERE,PRO,UCO);
+    
+    
     TFIN = IMTIEM('',TINI); % tiempo de ejecución
   end % endif IMPR
   
@@ -358,5 +488,5 @@ fprintf('------------------------------------------------------------------\n');
   end % endif
   
   % mostrar tiempo final
-  TFIN = IMTIEM('Tiempo total de ejecucion del programa                      ',TINT);
+  TFIN = IMTIEM('Tiempo total de ejecucion del programa ',TINT);
 end

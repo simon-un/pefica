@@ -1,0 +1,14 @@
+Plugin(CutPlane).A=0;
+Plugin(CutPlane).B=0;
+Plugin(CutPlane).C=1;
+Plugin(CutPlane).D=-100;
+Plugin(CutPlane).ExtractVolume=0;
+Plugin(CutPlane).RecurLevel=4;
+Plugin(CutPlane).TargetError=0;
+Plugin(CutPlane).View=14;
+Plugin(CutPlane).Run;
+Plugin(Scal2Vec).NameNewView= "NewView";
+Plugin(Scal2Vec).ViewX=-1;
+Plugin(Scal2Vec).ViewY=-1;
+Plugin(Scal2Vec).ViewZ=24;
+Plugin(Scal2Vec).Run;

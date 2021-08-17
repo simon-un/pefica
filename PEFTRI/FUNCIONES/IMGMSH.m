@@ -1,5 +1,6 @@
 % imprimir archivo de los resultados para postproceso en GMSH
-function IMGMSH(ADAD,NNUD,NELE,NNUE,NGAU,NCAT,XYZ,ELE,SUP,UXY,FXY,SRE,ERE,PRO)
+function IMGMSH(ADAD,NNUD,NELE,NNUE,NGAU,NCAT,XYZ,ELE,SUP, ...
+                UXY,FGX,SRE,ERE,PRO,UCO)
 % entrada:  ADAD: nombre del archivo de datos sin extensión
 %           NNUD: número de nudos
 %           NELE: número de elementos
@@ -10,13 +11,14 @@ function IMGMSH(ADAD,NNUD,NELE,NNUE,NGAU,NCAT,XYZ,ELE,SUP,UXY,FXY,SRE,ERE,PRO)
 %           ELE:  tabla de conectividades de los elementos
 %           SUP:  tabla de id de superficie asociada al elemento finito 
 %           UXY:  tabla de desplazamientos de los nudos
-%           FXY:  tabla de fuerzas en los nudos
+%           FGX:  tabla de fuerzas equivalentes + fuerzas directas en los nudos
 %           SRE:  tabla de los esfuerzos en los elementos
 %           ERE:  tabla de las deformaciones en los elementos
 %           PRO:  1: dibuja esf y def en el interior de los elementos
 %                 0: dibuja esf y def promedio en los nudos
 %                 2: dibuja esf y def promedio en los nudos por categorías
 %                 3: dibuja esf y def en el interior de elementos por categorías 
+%           UCO:  tabla indicadora de desplazamientos conocidos
   
   % crear archivo de opciones de presentación de resultados .pos.opt
   % ------------------------------------------------------------
@@ -46,14 +48,26 @@ function IMGMSH(ADAD,NNUD,NELE,NNUE,NGAU,NCAT,XYZ,ELE,SUP,UXY,FXY,SRE,ERE,PRO)
   fprintf(FIDE,'View[0].DisplacementFactor = 100; \n'); % factor de exageración
   fprintf(FIDE,'View[0].VectorType = 5; \n'); % tipo de representación con deformada
   
-  % mostrar vectores de las fuerzas en los nudos (view[1])
-  fprintf(FIDE,'View[1].VectorType = 2; \n'); % tipo de representación con flecha plana
+  % mostrar vectores de las fuerzas equivalentes + fuerzas directas en los nudos (view[1])
+  fprintf(FIDE,'View[1].VectorType = 4; \n'); % tipo de representación con flecha 3D
   fprintf(FIDE,'View[1].GlyphLocation = 2; \n'); % ubicación de flecha sobre nudo
   fprintf(FIDE,'View[1].CenterGlyphs = 2; \n'); % alineación de flecha a derecha
-  fprintf(FIDE,'View[1].LineWidth = 2; \n'); % ancho de línea
+  fprintf(FIDE,'View[1].LineWidth = 1; \n'); % ancho de línea
   fprintf(FIDE,'View[1].ArrowSizeMax = 120; \n'); % tamaño de flecha 120
   fprintf(FIDE,'View[1].IntervalsType = 3; \n'); % contorno de áreas llenas
   fprintf(FIDE,'View[1].NbIso = 8; \n'); % 8 rangos de colores
+  
+  % mostrar vectores de los apoyos en los nudos (vistas NVIE+1 a NVIE+4
+  for IVIE=NVIE+1:NVIE+4
+   fprintf(FIDE,'View[%d].VectorType = 4; \n',IVIE); % tipo de representación con flecha 3D
+   fprintf(FIDE,'View[%d].GlyphLocation = 2; \n',IVIE); % ubicación de flecha sobre nudo
+   fprintf(FIDE,'View[%d].CenterGlyphs = 2; \n',IVIE); % alineación de flecha a derecha
+   fprintf(FIDE,'View[%d].LineWidth = 1; \n',IVIE); % ancho de línea
+   fprintf(FIDE,'View[%d].ArrowSizeMax = 30; \n',IVIE); % tamaño de flecha 30
+   fprintf(FIDE,'View[%d].IntervalsType = 3; \n',IVIE); % contorno de áreas llenas
+   fprintf(FIDE,'View[%d].NbIso = 1; \n',IVIE); % 1 rangos de colores
+   fprintf(FIDE,'View[%d].Visible = 0; \n',IVIE); % vistas no visibles
+  end % endfor
   
   status = fclose(FIDE); % cierre de archivo .pos.opt
   % ------------------------------------------------------------
@@ -103,7 +117,7 @@ function IMGMSH(ADAD,NNUD,NELE,NNUE,NGAU,NCAT,XYZ,ELE,SUP,UXY,FXY,SRE,ERE,PRO)
   % ciclo de pasos de carga
   % --------------------------
   UXYT=UXY;
-  FXYT=FXY;
+  FGXT=FGX;
   SRET=SRE;
   ERET=ERE;
   NSTEP=1; % NUMERO DE PASOS INVENTADO
@@ -113,11 +127,12 @@ function IMGMSH(ADAD,NNUD,NELE,NNUE,NGAU,NCAT,XYZ,ELE,SUP,UXY,FXY,SRE,ERE,PRO)
   if NSTEP==1;
     TIME=1;
   else
-    TIME=sin(2*pi*(STEP+1)/NSTEP);
+    %TIME=sin(2*pi*(STEP+1)/NSTEP);
+    TIME=(STEP+1)/NSTEP;
     warning('paso de carga: %6i',STEP);
   end
   UXY=TIME*UXYT;
-  FXY=TIME*FXYT;
+  FGX=TIME*FGXT;
   SRE=[SRET(:,1:2),TIME*SRET(:,3:12)];
   ERE=[ERET(:,1:2),TIME*ERET(:,3:11)];
   % --------------------------
@@ -129,10 +144,10 @@ function IMGMSH(ADAD,NNUD,NELE,NNUE,NGAU,NCAT,XYZ,ELE,SUP,UXY,FXY,SRE,ERE,PRO)
   fprintf(FIDE,'%6i %+15.6e %+15.6e %+15.6e \n',TEM)
   fprintf(FIDE,'$EndNodeData \n');
   
-  % fuerzas de los nudos
-  fprintf(FIDE,'$NodeData \n 1 \n "Fuerzas nod." \n 1 \n');
+  % fuerzas equivalentes + fuerzas directas en los nudos
+  fprintf(FIDE,'$NodeData \n 1 \n "Fuerzas: equiv. + direc. nod." \n 1 \n');
   fprintf(FIDE,' %+10.4e \n 3 \n %6i \n 3 \n %6i \n',TIME,STEP,NNUD);
-  TEM = [double(1:NNUD);FXY'];
+  TEM = [double(1:NNUD);FGX'];
   fprintf(FIDE,'%6i %+15.6e %+15.6e %+15.6e \n',TEM)
   fprintf(FIDE,'$EndNodeData \n');
   
@@ -314,7 +329,33 @@ function IMGMSH(ADAD,NNUD,NELE,NNUE,NGAU,NCAT,XYZ,ELE,SUP,UXY,FXY,SRE,ERE,PRO)
   end % endfor STEP
   % --------------------
   
+  
+  % indicador de los apoyos a partir de la tabla UCO
+  APO=zeros(NNUD,9);
+  NUCO=size(UCO,1);
+  for IUCO=1:NUCO
+    APO(UCO(IUCO,1),1) = UCO(IUCO,2);
+    APO(UCO(IUCO,1),5) = UCO(IUCO,3);
+    APO(UCO(IUCO,1),9) = UCO(IUCO,4);
+  end % endfor
+  fprintf(FIDE,'$NodeData \n 1 \n "Apoyos: restricción en x" \n 1 \n');
+  fprintf(FIDE,' %+10.4e \n 3 \n %6i \n 3 \n %6i \n',TIME,STEP,NNUD);
+  TEM = [double(1:NNUD);APO(:,1:3)'];
+  fprintf(FIDE,'%6i %+15.6e %+15.6e %+15.6e \n',TEM)
+  fprintf(FIDE,'$EndNodeData \n');
+  
+  fprintf(FIDE,'$NodeData \n 1 \n "Apoyos: restricción en y" \n 1 \n');
+  fprintf(FIDE,' %+10.4e \n 3 \n %6i \n 3 \n %6i \n',TIME,STEP,NNUD);
+  TEM = [double(1:NNUD);APO(:,4:6)'];
+  fprintf(FIDE,'%6i %+15.6e %+15.6e %+15.6e \n',TEM)
+  fprintf(FIDE,'$EndNodeData \n');
+  
+  fprintf(FIDE,'$NodeData \n 1 \n "Apoyos: restricción en z" \n 1 \n');
+  fprintf(FIDE,' %+10.4e \n 3 \n %6i \n 3 \n %6i \n',TIME,STEP,NNUD);
+  TEM = [double(1:NNUD);APO(:,7:9)'];
+  fprintf(FIDE,'%6i %+15.6e %+15.6e %+15.6e \n',TEM)
+  fprintf(FIDE,'$EndNodeData \n');
+  
   status = fclose(FIDE); % cierre de archivo .pos
  
-
 end
