@@ -1,0 +1,13 @@
+# Categoría: aplicado a superficies o volúmenes
+CATE EYOU=<eyou> POIS=<pois> TESP=<tesp> TIPR=<20 o 21>
+
+# Restricción de desplazamiento: puntos, líneas o superficies
+DISP UX=<ux> UY=<uy>
+
+# Fuerzas puntuales: puntos
+LOAD FX=<fx> FY=<fy>
+
+# Cargas distribuidas: líneas
+PRES WX=<wx> WY=<wy>
+PRES WN=<wn> WT=<wt>
+PRES GAWA=<gawa> HEWA<hewa>
