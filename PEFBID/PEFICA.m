@@ -23,7 +23,7 @@ clc; % limpiar pantalla
 fprintf('----------------------------------------------------------------- \n');
 fprintf('       PEFICA 2.0. Universidad Nacional de Colombia 2020          \n');
 fprintf('----------------------------------------------------------------- \n');
-fprintf('PEFBID/PEFICA: Analisis bidimensional elastico lineal \n');
+fprintf('PEFBID/PEFICA: Análisis bidimensional elástico lineal \n');
 fprintf('escriba PEFICA <nombre archivo datos .m o .msh> <opciones lectura>\n');
 fprintf('el parametro <opciones lectura> puede ser igual a: \n');
 fprintf('=04: lectura de .m de GiD y escritura malla en TikZ\n');
@@ -74,7 +74,7 @@ fprintf('------------------------------------------------------------------\n');
   % lectura de archivo de entrada de datos
   % -------------------------------------------------------------------------
   if TLEN<10
-    % opción de lectura de entrada de datos de archivo .m (de GiD o escrito direc)
+    % opción de lectura de entrada de datos de archivo .m
     TINI = IMTIEM('Lectura de datos de entrada (.m) ',0);
     run(ADAT);
     % sub opciones
@@ -153,28 +153,76 @@ fprintf('------------------------------------------------------------------\n');
   fprintf('Malla de %g nudos, %g elementos y %g GLs\n', NNUD,NELE,NGLT);
   
   TINI = IMTIEM('Matriz de rigidez del solido ',0);
-  % -------------------------------------------------------------------------  
-  KGS = zeros(NGLT,NGLT); % definición de tamaño de la matriz de rigidez sólido
-  for IELE = 1:NELE
-    
-    % matriz de rigidéz de elemento
-    CAE(1:PCAT) = CAT(ELE(IELE,1),1:PCAT); % propiedades de la categ eleme IELE
-    NUEL = CAE(1,PMAT+3);  % número de nudos del elemento IELE
-    XYE(1:NUEL,1:NDIM) = XYZ(ELE(IELE,2:NUEL+1),1:NDIM); % coor nud de elem IELE
-    [KEL] = KELEME(TIPR,XYE,CAE); % matriz de rigidez del elem IELE
-    
-    % ensamblaje de KEL() del elemento IELE en KGS() del sólido
-    NKEL = size(KEL,1); % tamaño de la matriz de rigidez del elemento
-    for IKEL=1:NKEL
-      for JKEL=1:NKEL
-        if ( INC(IELE, IKEL) ~= 0 & INC(IELE, JKEL) ~= 0)
-          KGS(INC(IELE, IKEL), INC(IELE, JKEL)) = ...
-          KGS(INC(IELE, IKEL), INC(IELE, JKEL)) + KEL(IKEL, JKEL);
-        end % endif
-      end % endfor JKEL
-    end % endfor IKEL
-    % fin del ensamblaje de un elemento
-  end % endfor IELE
+  % -------------------------------------------------------------------------
+  
+  % control interno del tipo de matriz de rigidez ensamblada:
+  % LSIZ=0: matriz llena que funciona hasta 22500 nudos
+  % LSIZ=1: matriz sparse para problemas de más de 22500 nudos
+  
+  LSIZ=0;
+  if NNUD>22500;
+    LSIZ=1;
+  end % endif
+
+  switch LSIZ
+  
+    case 0
+    % ensamblaje convencional de la matriz de rigidez, el cual tiene una
+    % capacidad máxima de 45000 grados de libertad
+    %
+    KGS = zeros(NGLT,NGLT); % definición de tamaño de la matriz de rigidez sólido
+    for IELE = 1:NELE
+      % matriz de rigidéz de elemento
+      CAE(1:PCAT) = CAT(ELE(IELE,1),1:PCAT); % propiedades de la categ eleme IELE
+      NUEL = CAE(1,PMAT+3);  % número de nudos del elemento IELE
+      XYE(1:NUEL,1:NDIM) = XYZ(ELE(IELE,2:NUEL+1),1:NDIM); % coor nud de elem IELE
+      [KEL] = KELEME(TIPR,XYE,CAE); % matriz de rigidez del elem IELE
+     
+      % ensamblaje de KEL() del elemento IELE en KGS() del sólido
+      NKEL = size(KEL,1); % tamaño de la matriz de rigidez del elemento
+      for IKEL=1:NKEL
+        for JKEL=1:NKEL
+          if ( INC(IELE, IKEL) ~= 0 & INC(IELE, JKEL) ~= 0)
+            KGS(INC(IELE, IKEL), INC(IELE, JKEL)) = ...
+            KGS(INC(IELE, IKEL), INC(IELE, JKEL)) + KEL(IKEL, JKEL);
+          end % endif
+        end % endfor JKEL
+      end % endfor IKEL
+      % fin del ensamblaje
+    end % endfor IELE
+
+    case 1
+    % ensamblaje de una matriz de rigidez tipo sparse, la cual tiene una
+    % capacidad máxima aproximanda de 300,000 grados de libertad y 
+    % 2,700,000 elementos tetrahédicos.
+    %
+    IKGS = 0;
+    KGV = zeros(1,1,'double');
+    for IELE = 1:NELE
+      % matriz de rigidéz de elemento
+      CAE(1:PCAT) = CAT(ELE(IELE,1),1:PCAT); % propiedades de la categ eleme IELE
+      NUEL = CAE(1,PMAT+3);  % número de nudos del elemento IELE
+      XYE(1:NUEL,1:NDIM) = XYZ(ELE(IELE,2:NUEL+1),1:NDIM); % coor nud de elem IELE
+      [KEL] = KELEME(TIPR,XYE,CAE); % matriz de rigidez del elem IELE tipo llena
+     
+      % ensamblaje de KEL() del elemento IELE en KGS() del sólido
+      NKEL = size(KEL,1); % tamaño de la matriz de rigidez del elemento
+      for IKEL=1:NKEL
+        for JKEL=1:NKEL
+          if (INC(IELE, IKEL) ~= 0 & INC(IELE, JKEL) ~= 0)
+            IKGS = IKGS + 1;
+            KGF(IKGS) = INC(IELE, IKEL);
+            KGC(IKGS) = INC(IELE, JKEL);
+            KGV(IKGS) = KEL(IKEL, JKEL);
+          end % endif
+        end % endfor JKEL
+      end % endfor IKEL
+    end
+    % construcción de la matriz sparse de rigidez
+    % si dos ubicaciones coinciden la función sparse suma los términos   
+    KGS = sparse(KGF,KGC,KGV);
+
+  end % endswitch
   
   % submatrices de rigidez del sólido
   KAA = KGS(1:NGLD,1:NGLD);            % submatriz K_{alpha,alpha}
@@ -203,7 +251,7 @@ fprintf('------------------------------------------------------------------\n');
         end % endif
       end % endfor IFEL
       % fin ensamblaje
-    end % endfor IEIE
+    end % endfor IELE
   end % endif
 
   % Vector de fuerzas equivalentes a la acción de cargas distribuidas en el solido
@@ -248,7 +296,27 @@ fprintf('------------------------------------------------------------------\n');
   % -------------------------------------------------------------------------
   % solución de un sistema de ecuaciones simultaneas para obtener el
   % subvector de desplazamientos nodales desconocidos u_{alpha}
+
+  % solución para matrices no simétricas, método de Gauss-Jordan (mayor tiempo de ejecución)
   UAA = (KAA) \ (FAA - KAB * UBB);
+  
+  % % solución para matrices simétricas (menor tiempo de ejecución)
+  % AUX = FAA - KAB * UBB;
+  % switch LSIZ
+  %   case 0
+  %     % solución del sistema de ecuaciones simultáneas mediante 
+  %     % el método de Cholesky aplicado a la matriz de rigidez llena
+  %     fprintf('solución sistema método Cholesky ');
+  %     opts.SYM = true;
+  %     UAA = linsolve(KAA,AUX,opts);
+  %   case 1
+  %     % solución del sistema de ecuaciones simultáneas mediante
+  %     % el método iterativo de los gradientes conjugados aplicado
+  %     % a la matriz de rigidez tipo sparse
+  %     fprintf('solución sistema método gradientes conjugados\n');
+  %     UAA = pcg(KAA,AUX,1e-6,1000);
+  % end % endswitch
+  
   UTO = [ UAA ; UBB ]; % vector de desplaz. nodales completo
   [UXY] = ORVETA(UTO,MGL); % tabla de desplaz. nodales en formato UX,UY
 
