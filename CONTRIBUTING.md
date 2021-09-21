@@ -11,6 +11,7 @@ Seguir estas directrices nos ayuda a saber que usted respeta el tiempo de los de
 
 ## Reglas generales 
 
+- Utilizar únicamente la rama de desarrollo para proponer cambios o mejoras.
 - Garantizar la compatibilidad entre plataformas para cada cambio que se acepte. Windows, Mac, Debian, Ubuntu, Linux en general.
 - Asegúrese de que el código que entra en el repositorio cumple con las reglas generales de desarrollo para cada lenguaje de programación.
 - Seguir o crear problemas (_issues_) para los cambios y mejoras importantes que desee realizar. 
@@ -33,7 +34,7 @@ Antes de comenzar directamente con el desarrollo de algunas funcionalidades nuev
 
 Para desarrollos mayores a simples arreglos de un par de líneas o correcciones tipográficas, por favor:
 
-- Crear su propia copia del código (_fork_)
+- Crear su propia copia del código a partir de la rama "desarrollo" (_fork_)
 - Descargar el código en su computador personal (`git clone xxx`)
 - Crear una rama nueva, cuyo nombre refleje la funcionalidad en la que está trabajando (`git checkout -b branch-name`)
 - Hacer los cambios o desarrollos nuevos 
