@@ -2,14 +2,14 @@
 % PEFiCA: Programa de elementos finitos a código abierto.
 % versión 2.0
 %
-% Esta versión esta en la carpeta PEFTRI, e incluye:
+% Esta versión está en la carpeta PEFTRI, e incluye:
 % Análisis elástico lineal para problemas tridimensionales
 %
 % mediante el método de los elementos finitos. Considera
 % deformaciones infinitesimales y utiliza elementos finitos tetraédricos
 % lineales. Lee los datos y escribe los resultados en el programa GMSH.
 %
-% Dorian L. Linero S., Martín Estrada M. y Diego A. Garzón A.
+% Dorian L. Linero S., Martín Estrada M. & Diego A. Garzón A.
 % Universidad Nacional de Colombia
 % Facultad de Ingeniería
 % Todos los derechos reservados, 2020
@@ -71,10 +71,8 @@ fprintf('------------------------------------------------------------------\n');
   % lectura de archivo de entrada de datos
   % -------------------------------------------------------------------------
   if TLEN<10
-    % opción de lectura de entrada de datos de archivo .m 
-    % exportado de GiD o escrito directamente. El formato A de los 
-    % desplazamientos y las fuerzas conocidos
-    TINI = IMTIEM('Lectura de datos de entrada de archivo .m ',0);
+    % opción de lectura de entrada de datos de archivo .m
+    TINI = IMTIEM('Lectura de datos de entrada (.m) ',0);
     run(ADAT);
     SUP = ones(1,NELE); % tabla de id del volumen asociado a cada elemento
     PRO=1;
@@ -137,19 +135,19 @@ fprintf('------------------------------------------------------------------\n');
   % -------------------------------------------------------------------------
   
   % control interno del tipo de matriz de rigidez ensamblada:
-  % LSIZ=0: matriz llena que funciona hasta 15,000 nudos
-  % LSIZ=1: matriz sparse para problemas de más de 15,000 nudos
+  % LSIZ=0: matriz llena que funciona hasta 15000 nudos
+  % LSIZ=1: matriz sparse para problemas de más de 15000 nudos
   
   LSIZ=0;
   if NNUD>15000;
     LSIZ=1;
   end % endif
-  
+
   switch LSIZ
   
     case 0
-    % ensamblaje convensional de la matriz de rigidez, el cual tiene una 
-    % capacidad máxima de 45,000 grados de libertad
+    % ensamblaje convencional de la matriz de rigidez, el cual tiene una
+    % capacidad máxima de 45000 grados de libertad
     %
     fprintf('ensamblaje convensional de la matriz de rigidez llena ');
     KGS = zeros(NGLT,NGLT); % definición de tamaño de la matriz de rigidez sólido
@@ -171,8 +169,8 @@ fprintf('------------------------------------------------------------------\n');
         end % endfor JKEL
       end % endfor IKEL
       % fin del ensamblaje
-    end
-  
+    end % endfor IELE
+
     case 1
     % ensamblaje de una matriz de rigidez tipo sparse, la cual tiene una
     % capacidad máxima aproximanda de 300,000 grados de libertad y 
@@ -223,7 +221,7 @@ fprintf('------------------------------------------------------------------\n');
   GAMT = sum(CAT(:,3));
   if GAMT~=0; % contror de problemas sin fuerzas de cuerpo GAMM=0
     for IELE = 1:NELE
-      % matriz de rigidéz de elemento
+      % vector de fuerzas equivalentes al peso propio en el elemento
       CAE(1:PCAT) = CAT(ELE(IELE,1),1:PCAT); % propiedades de la categ eleme IELE
       NUEL = CAE(1,PMAT+3);  % número de nudos del elemento IELE
       XYE(1:NUEL,1:NDIM) = XYZ(ELE(IELE,2:NUEL+1),1:NDIM); % coor nud de elem IELE
@@ -236,7 +234,7 @@ fprintf('------------------------------------------------------------------\n');
         end % endif
       end % endfor IFEL
       % fin ensamblaje
-    end % endfor
+    end % endfor IELE
   end % endif
 
   % Vector de fuerzas de superficie en el solido
@@ -283,8 +281,8 @@ fprintf('------------------------------------------------------------------\n');
   % -------------------------------------------------------------------------
   % solución de un sistema de ecuaciones simultaneas para obtener el
   % subvector de desplazamientos nodales desconocidos u_{alpha}
-  
-  % solución para matrices no simétricas método de Gauss-Jordan (mayor tiempo de ejecución)
+
+  % solución para matrices no simétricas, método de Gauss-Jordan (mayor tiempo de ejecución)
   % UAA = (KAA) \ (FAA - KAB * UBB);
   
   % solución para matrices simétricas (menor tiempo de ejecución)
