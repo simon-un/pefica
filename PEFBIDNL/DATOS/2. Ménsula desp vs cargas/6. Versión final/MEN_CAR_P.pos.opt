@@ -1,0 +1,107 @@
+View[0].Visible = 1; 
+View[0].IntervalsType = 3; 
+View[0].ShowElement = 1; 
+View[1].Visible = 0; 
+View[1].IntervalsType = 3; 
+View[1].ShowElement = 1; 
+View[2].Visible = 0; 
+View[2].IntervalsType = 3; 
+View[2].ShowElement = 1; 
+View[3].Visible = 0; 
+View[3].IntervalsType = 3; 
+View[3].ShowElement = 1; 
+View[4].Visible = 0; 
+View[4].IntervalsType = 3; 
+View[4].ShowElement = 1; 
+View[5].Visible = 0; 
+View[5].IntervalsType = 3; 
+View[5].ShowElement = 1; 
+View[6].Visible = 0; 
+View[6].IntervalsType = 3; 
+View[6].ShowElement = 1; 
+View[7].Visible = 0; 
+View[7].IntervalsType = 3; 
+View[7].ShowElement = 1; 
+View[8].Visible = 0; 
+View[8].IntervalsType = 3; 
+View[8].ShowElement = 1; 
+View[9].Visible = 0; 
+View[9].IntervalsType = 3; 
+View[9].ShowElement = 1; 
+View[10].Visible = 0; 
+View[10].IntervalsType = 3; 
+View[10].ShowElement = 1; 
+View[11].Visible = 0; 
+View[11].IntervalsType = 3; 
+View[11].ShowElement = 1; 
+View[12].Visible = 0; 
+View[12].IntervalsType = 3; 
+View[12].ShowElement = 1; 
+View[13].Visible = 0; 
+View[13].IntervalsType = 3; 
+View[13].ShowElement = 1; 
+View[14].Visible = 0; 
+View[14].IntervalsType = 3; 
+View[14].ShowElement = 1; 
+View[15].Visible = 0; 
+View[15].IntervalsType = 3; 
+View[15].ShowElement = 1; 
+View[16].Visible = 0; 
+View[16].IntervalsType = 3; 
+View[16].ShowElement = 1; 
+View[17].Visible = 0; 
+View[17].IntervalsType = 3; 
+View[17].ShowElement = 1; 
+View[18].Visible = 0; 
+View[18].IntervalsType = 3; 
+View[18].ShowElement = 1; 
+View[19].Visible = 0; 
+View[19].IntervalsType = 3; 
+View[19].ShowElement = 1; 
+View[0].DisplacementFactor = 1; 
+View[0].VectorType = 5; 
+View[1].VectorType = 2; 
+View[1].GlyphLocation = 2; 
+View[1].CenterGlyphs = 2; 
+View[1].LineWidth = 2; 
+View[1].ArrowSizeMax = 120; 
+View[1].IntervalsType = 3; 
+View[1].NbIso = 8; 
+View "Factor de mayoración lambda vs. Pseudotiempo" {
+SP(1,1,0){ 
+0,
+3.500000e-01,
+7.000000e-01,
+7.500000e-01,
+8.000000e-01,
+8.500000e-01,
+9.000000e-01,
+9.500000e-01,
+9.600000e-01,
+9.700000e-01,
+9.800000e-01,
+9.900000e-01,
+1};
+TIME{
+1,
+2,
+3,
+4,
+5,
+6,
+7,
+8,
+9,
+10,
+11,
+12,
+13};
+};
+View[20].Type=3; 
+View[20].Axes=3; 
+View[20].AutoPosition=0; 
+View[20].RangeType =1; 
+View[20].PositionX =90; 
+View[20].PositionY =36; 
+View[20].Width =250; 
+View[20].Height =162; 
