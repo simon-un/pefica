@@ -1,0 +1,114 @@
+----------------------------------------------------------------- 
+       PEFICA 2.0. Universidad Nacional de Colombia 2020          
+----------------------------------------------------------------- 
+PEFBID/PEFICA: Analisis bidimensional elastico lineal 
+escriba PEFICA <nombre archivo datos .m o .msh> <opciones lectura>
+el parametro <opciones lectura> puede ser igual a: 
+=04: lectura de .m de GiD y escritura malla en TikZ
+=05: lectura de .m de GiD y escritura definida por IMPR.
+     Si IMPR=2 se escriben resultados en .gid.res y gid.msh de GiD
+=06: lectura de .m de GiD y escritura resultados en .gid.res y
+     gid.msh de GiD, y en ventana de comandos
+=07: lectura de .m de GiD y escritura resultados en .pos de GMSH
+     esfuerzos y deformaciones promedio en nudos PRO=0
+=08: lectura de .m de GiD y escritura resultados en .pos de GMSH
+     esfuerzos y deformaciones en el interior de elementos PRO=1
+=10: lectura datos de .msh de GMSH y escritura resultados en
+     .pos de GMSH esfuerzos y deformaciones promedio en nudos
+     para una categoría de material y espesor PRO=0
+=11: lectura datos de .msh de GMSH y escritura resultad en .pos de
+     GMSH, esfuerzos y deformaciones en el interior de eleme PRO=1
+=12: lectura datos de .msh de GMSH y escritura resultados en 
+     .pos de GMSH esfuerzos y deformaciones promedio en nudos 
+     para varias categorías de material y espesor PRO=2.
+     Adicionalmente se imprime en la ventana las reacciones.
+=13: análisis no lineal controlado por desplazamientos, lectura de 
+     datos en archivo .m y escritura resultados en archivo .pos de GMSH
+=14: análisis no lineal controlado por fuerzas, lectura de datos en 
+     archivo .m y escritura resultados en archivo .pos de GMSH
+=17: lectura datos de .msh de GMSH y escritura resultado .gid.res 
+     y gid.msh de GiD 
+=19: lectura datos de .msh de GMSH y escritura malla en TikZ 
+Si <opciones lectura> se omite adquiere un valor de 10. 
+------------------------------------------------------------------
+Inicio de ejecucion del programa 
+Lectura de datos de entrada de archivo .msh de GMSH  (  0.04 seg.) 
+Grados de libertad de nudos y elementos  (  0.01 seg.) 
+Malla de 543 nudos, 974 elementos y 1086 GLs
+Vectores de fuerzas en los nudos del solido  (  0.00 seg.) 
+----------------------------------------------------------------- 
+Proceso iterativo de Newton - Raphson:
+----------------------------------------------------------------- 
+ Pseudotiempo número 1 (LAMB = 0)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 0 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 1 (  1.77 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 2 (LAMB = 0.05)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 8.808837e-05
+  Iteración 2, error = 3.718160e-14 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 2 (  2.70 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 3 (LAMB = 0.1)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 1.000000e+00
+  Iteración 2, error = 1.874084e-14 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 3 (  2.53 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 4 (LAMB = 0.15)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 5.000000e-01
+  Iteración 2, error = 2.101541e-02
+  Iteración 3, error = 1.997846e-03
+  Iteración 4, error = 2.056366e-04
+  Iteración 5, error = 2.188892e-05
+  Iteración 6, error = 2.332755e-06
+  Iteración 7, error = 2.486506e-07
+  Iteración 8, error = 2.650342e-08
+  Iteración 9, error = 2.824980e-09 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 4 ( 11.46 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 5 (LAMB = 0.2)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 3.292315e-01
+  Iteración 2, error = 1.296173e-02
+  Iteración 3, error = 2.540573e-03
+  Iteración 4, error = 1.055932e-03
+  Iteración 5, error = 1.557721e-04
+  Iteración 6, error = 2.268732e-05
+  Iteración 7, error = 3.301512e-06
+  Iteración 8, error = 4.803033e-07
+  Iteración 9, error = 6.987100e-08
+  Iteración 10, error = 1.016421e-08
+  Iteración 11, error = 1.478597e-09 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 5 ( 14.02 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 6 (LAMB = 0.25)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 2.478409e-01
+  Iteración 2, error = 1.323668e-02
+  Iteración 3, error = 1.268538e-03
+  Iteración 4, error = 5.093476e-04
+  Iteración 5, error = 1.377509e-04
+  Iteración 6, error = 4.337130e-05
+  Iteración 7, error = 1.437190e-05
+  Iteración 8, error = 4.829961e-06
+  Iteración 9, error = 1.627291e-06
+  Iteración 10, error = 5.486916e-07
+  Iteración 11, error = 1.850265e-07
+  Iteración 12, error = 6.239647e-08
+  Iteración 13, error = 2.104200e-08
+  Iteración 14, error = 7.096029e-09 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 6 ( 18.10 seg.) 
+ ----------------------------------------------------------------- 
+Fin del proceso iterativo de Newton Raphson ( 50.59 seg.) 
+----------------------------------------------------------------- 
+Tiempo total de ejecucion del programa  ( 50.64 seg.) 
+>> 
