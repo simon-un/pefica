@@ -1,0 +1,163 @@
+View[0].Visible = 1; 
+View[0].IntervalsType = 3; 
+View[0].ShowElement = 1; 
+View[1].Visible = 0; 
+View[1].IntervalsType = 3; 
+View[1].ShowElement = 1; 
+View[2].Visible = 0; 
+View[2].IntervalsType = 3; 
+View[2].ShowElement = 1; 
+View[3].Visible = 0; 
+View[3].IntervalsType = 3; 
+View[3].ShowElement = 1; 
+View[4].Visible = 0; 
+View[4].IntervalsType = 3; 
+View[4].ShowElement = 1; 
+View[5].Visible = 0; 
+View[5].IntervalsType = 3; 
+View[5].ShowElement = 1; 
+View[6].Visible = 0; 
+View[6].IntervalsType = 3; 
+View[6].ShowElement = 1; 
+View[7].Visible = 0; 
+View[7].IntervalsType = 3; 
+View[7].ShowElement = 1; 
+View[8].Visible = 0; 
+View[8].IntervalsType = 3; 
+View[8].ShowElement = 1; 
+View[9].Visible = 0; 
+View[9].IntervalsType = 3; 
+View[9].ShowElement = 1; 
+View[10].Visible = 0; 
+View[10].IntervalsType = 3; 
+View[10].ShowElement = 1; 
+View[11].Visible = 0; 
+View[11].IntervalsType = 3; 
+View[11].ShowElement = 1; 
+View[12].Visible = 0; 
+View[12].IntervalsType = 3; 
+View[12].ShowElement = 1; 
+View[13].Visible = 0; 
+View[13].IntervalsType = 3; 
+View[13].ShowElement = 1; 
+View[14].Visible = 0; 
+View[14].IntervalsType = 3; 
+View[14].ShowElement = 1; 
+View[15].Visible = 0; 
+View[15].IntervalsType = 3; 
+View[15].ShowElement = 1; 
+View[16].Visible = 0; 
+View[16].IntervalsType = 3; 
+View[16].ShowElement = 1; 
+View[17].Visible = 0; 
+View[17].IntervalsType = 3; 
+View[17].ShowElement = 1; 
+View[18].Visible = 0; 
+View[18].IntervalsType = 3; 
+View[18].ShowElement = 1; 
+View[19].Visible = 0; 
+View[19].IntervalsType = 3; 
+View[19].ShowElement = 1; 
+View[20].Visible = 0; 
+View[20].IntervalsType = 3; 
+View[20].ShowElement = 1; 
+View[21].Visible = 0; 
+View[21].IntervalsType = 3; 
+View[21].ShowElement = 1; 
+View[22].Visible = 0; 
+View[22].IntervalsType = 3; 
+View[22].ShowElement = 1; 
+View[23].Visible = 0; 
+View[23].IntervalsType = 3; 
+View[23].ShowElement = 1; 
+View[24].Visible = 0; 
+View[24].IntervalsType = 3; 
+View[24].ShowElement = 1; 
+View[25].Visible = 0; 
+View[25].IntervalsType = 3; 
+View[25].ShowElement = 1; 
+View[26].Visible = 0; 
+View[26].IntervalsType = 3; 
+View[26].ShowElement = 1; 
+View[27].Visible = 0; 
+View[27].IntervalsType = 3; 
+View[27].ShowElement = 1; 
+View[28].Visible = 0; 
+View[28].IntervalsType = 3; 
+View[28].ShowElement = 1; 
+View[29].Visible = 0; 
+View[29].IntervalsType = 3; 
+View[29].ShowElement = 1; 
+View[30].Visible = 0; 
+View[30].IntervalsType = 3; 
+View[30].ShowElement = 1; 
+View[31].Visible = 0; 
+View[31].IntervalsType = 3; 
+View[31].ShowElement = 1; 
+View[32].Visible = 0; 
+View[32].IntervalsType = 3; 
+View[32].ShowElement = 1; 
+View[33].Visible = 0; 
+View[33].IntervalsType = 3; 
+View[33].ShowElement = 1; 
+View[34].Visible = 0; 
+View[34].IntervalsType = 3; 
+View[34].ShowElement = 1; 
+View[35].Visible = 0; 
+View[35].IntervalsType = 3; 
+View[35].ShowElement = 1; 
+View[36].Visible = 0; 
+View[36].IntervalsType = 3; 
+View[36].ShowElement = 1; 
+View[37].Visible = 0; 
+View[37].IntervalsType = 3; 
+View[37].ShowElement = 1; 
+View[38].Visible = 0; 
+View[38].IntervalsType = 3; 
+View[38].ShowElement = 1; 
+View[39].Visible = 0; 
+View[39].IntervalsType = 3; 
+View[39].ShowElement = 1; 
+View[0].DisplacementFactor = 100; 
+View[0].VectorType = 5; 
+View[1].VectorType = 2; 
+View[1].GlyphLocation = 2; 
+View[1].CenterGlyphs = 2; 
+View[1].LineWidth = 2; 
+View[1].ArrowSizeMax = 120; 
+View[1].IntervalsType = 3; 
+View[1].NbIso = 8; 
+View "Factor de mayoración lambda vs. Pseudotiempo" {
+SP(1,1,0){ 
+0,
+10,
+20,
+30,
+40,
+50,
+60,
+70,
+80,
+90,
+100};
+TIME{
+1,
+2,
+3,
+4,
+5,
+6,
+7,
+8,
+9,
+10,
+11};
+};
+View[40].Type=3; 
+View[40].Axes=3; 
+View[40].AutoPosition=0; 
+View[40].RangeType =1; 
+View[40].PositionX =90; 
+View[40].PositionY =36; 
+View[40].Width =250; 
+View[40].Height =162; 
