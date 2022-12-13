@@ -8,12 +8,12 @@ Este programa se escribió para utilizar principalmente como una herramienta did
 
 ```
 % Uso: 
-%      PEFICA ADAT TLEC 
-%      PEFICA("ADAT", "TLEC")
+%      PEFICA ADAT
+%      PEFICA("ADAT")
 %
 % Uso desde consola (terminal):
-%      octave --eval 'PEFICA ADAT TLEC'
-%      octave --eval 'PEFICA("ADAT", "TLEC")'
+%      octave --eval 'PEFICA ADAT
+%      octave --eval 'PEFICA("ADAT")'
 %
 % ADAT: nombre del archivo de entrada de datos sin extensión
 % TLEC: identificador de la opción de lectura de datos. Este es un parámetro
