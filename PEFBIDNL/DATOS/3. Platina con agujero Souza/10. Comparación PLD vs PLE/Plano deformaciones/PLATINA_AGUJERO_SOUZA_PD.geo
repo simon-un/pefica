@@ -1,0 +1,20 @@
+cl__1 = 1;
+Point(1) = {0.005, 0, 0, cl__1};
+Point(2) = {0.01, 0, 0, cl__1};
+Point(3) = {0.01, 0.018, 0, cl__1};
+Point(4) = {0, 0.018, 0, cl__1};
+Point(5) = {0, 0.005, 0, cl__1};
+Point(6) = {0, 0, 0, cl__1};
+Line(1) = {1, 2};
+Line(2) = {2, 3};
+Line(3) = {3, 4};
+Line(4) = {4, 5};
+Circle(5) = {5, 6, 1};
+Curve Loop(1) = {1, 2, 3, 4, 5};
+Plane Surface(1) = {1};
+MeshSize {1, 2, 3, 4, 5, 6} = 0.0007;
+Physical Curve("DISP UY=0") = {1};
+Physical Curve("DISP UX=0") = {4};
+Physical Curve("DISP UY=0.00014") = {3};
+Physical Surface("CATE EYOU=7E7  POIS=0.2 GAMM=0.0 TESP=0.001 TIPR=21 EPLA=2E5 SIGY=243E3 TYMO=21") = {1, 2};
+

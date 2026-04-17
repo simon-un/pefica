@@ -1,0 +1,1536 @@
+PEFICA PLATINA_AGUJERO
+----------------------------------------------------------------- 
+       PEFICA 2.0. Universidad Nacional de Colombia 2020          
+----------------------------------------------------------------- 
+PEFBID/PEFICA: Analisis bidimensional elastico lineal 
+escriba PEFICA <nombre archivo datos .m o .msh> <opciones lectura>
+el parametro <opciones lectura> puede ser igual a: 
+=04: lectura de .m de GiD y escritura malla en TikZ
+=05: lectura de .m de GiD y escritura definida por IMPR.
+     Si IMPR=2 se escriben resultados en .gid.res y gid.msh de GiD
+=06: lectura de .m de GiD y escritura resultados en .gid.res y
+     gid.msh de GiD, y en ventana de comandos
+=07: lectura de .m de GiD y escritura resultados en .pos de GMSH
+     esfuerzos y deformaciones promedio en nudos PRO=0
+=08: lectura de .m de GiD y escritura resultados en .pos de GMSH
+     esfuerzos y deformaciones en el interior de elementos PRO=1
+=10: lectura datos de .msh de GMSH y escritura resultados en
+     .pos de GMSH esfuerzos y deformaciones promedio en nudos
+     para una categoría de material y espesor PRO=0
+=11: lectura datos de .msh de GMSH y escritura resultad en .pos de
+     GMSH, esfuerzos y deformaciones en el interior de eleme PRO=1
+=12: lectura datos de .msh de GMSH y escritura resultados en 
+     .pos de GMSH esfuerzos y deformaciones promedio en nudos 
+     para varias categorías de material y espesor PRO=2.
+     Adicionalmente se imprime en la ventana las reacciones.
+=13: análisis no lineal controlado por desplazamientos, lectura de 
+     datos en archivo .m y escritura resultados en archivo .pos de GMSH
+=14: análisis no lineal controlado por fuerzas, lectura de datos en 
+     archivo .m y escritura resultados en archivo .pos de GMSH
+=17: lectura datos de .msh de GMSH y escritura resultado .gid.res 
+     y gid.msh de GiD 
+=19: lectura datos de .msh de GMSH y escritura malla en TikZ 
+Si <opciones lectura> se omite adquiere un valor de 10. 
+------------------------------------------------------------------
+Inicio de ejecucion del programa 
+Lectura de datos de entrada de archivo .msh de GMSH  (  0.11 seg.) 
+Grados de libertad de nudos y elementos  (  0.01 seg.) 
+Malla de 461 nudos, 840 elementos y 922 GLs
+Vectores de fuerzas en los nudos del solido  (  0.00 seg.) 
+----------------------------------------------------------------- 
+Proceso iterativo de Newton - Raphson:
+----------------------------------------------------------------- 
+ Pseudotiempo número 1 (LAMB = 0)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 0 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 1 (  2.92 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 2 (LAMB = 0.005)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 1.203668e-05
+  Iteración 2, error = 7.180314e-14 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 2 (  4.18 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 3 (LAMB = 0.01)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 1.000000e+00
+  Iteración 2, error = 3.577495e-14 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 3 (  3.69 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 4 (LAMB = 0.015)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 5.000000e-01
+  Iteración 2, error = 2.389803e-14 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 4 (  3.72 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 5 (LAMB = 0.02)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 3.333333e-01
+  Iteración 2, error = 1.790553e-14 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 5 (  3.80 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 6 (LAMB = 0.025)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 2.500000e-01
+  Iteración 2, error = 1.442204e-14 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 6 (  3.78 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 7 (LAMB = 0.03)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 2.000000e-01
+  Iteración 2, error = 1.185627e-14 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 7 (  3.69 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 8 (LAMB = 0.035)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 1.666667e-01
+  Iteración 2, error = 1.022350e-14 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 8 (  3.66 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 9 (LAMB = 0.04)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 1.428571e-01
+  Iteración 2, error = 8.968940e-15 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 9 (  3.76 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 10 (LAMB = 0.045)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 1.250000e-01
+  Iteración 2, error = 8.065108e-15 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 10 (  3.69 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 11 (LAMB = 0.05)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 1.111111e-01
+  Iteración 2, error = 7.057386e-15 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 11 (  3.77 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 12 (LAMB = 0.055)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 1.000000e-01
+  Iteración 2, error = 6.505152e-15 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 12 (  3.73 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 13 (LAMB = 0.06)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 9.090909e-02
+  Iteración 2, error = 5.929095e-15 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 13 (  3.81 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 14 (LAMB = 0.065)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 8.333333e-02
+  Iteración 2, error = 5.484457e-15 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 14 (  3.73 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 15 (LAMB = 0.07)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 7.692308e-02
+  Iteración 2, error = 5.237972e-15 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 15 (  3.73 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 16 (LAMB = 0.075)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 7.142857e-02
+  Iteración 2, error = 4.769949e-15 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 16 (  3.83 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 17 (LAMB = 0.08)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 6.666667e-02
+  Iteración 2, error = 4.432806e-15 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 17 (  3.75 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 18 (LAMB = 0.085)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 6.250000e-02
+  Iteración 2, error = 4.208177e-15 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 18 (  3.72 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 19 (LAMB = 0.09)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 5.882353e-02
+  Iteración 2, error = 3.955639e-15 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 19 (  3.74 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 20 (LAMB = 0.095)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 5.555556e-02
+  Iteración 2, error = 3.805586e-15 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 20 (  4.01 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 21 (LAMB = 0.1)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 5.263158e-02
+  Iteración 2, error = 3.476937e-15 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 21 (  3.72 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 22 (LAMB = 0.105)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 5.000000e-02
+  Iteración 2, error = 3.542314e-15 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 22 (  3.76 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 23 (LAMB = 0.11)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 4.761905e-02
+  Iteración 2, error = 3.197764e-15 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 23 (  3.77 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 24 (LAMB = 0.115)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 4.545455e-02
+  Iteración 2, error = 3.030667e-15 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 24 (  3.98 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 25 (LAMB = 0.12)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 4.347826e-02
+  Iteración 2, error = 3.054219e-15 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 25 (  3.79 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 26 (LAMB = 0.125)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 4.166667e-02
+  Iteración 2, error = 2.923197e-15 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 26 (  3.92 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 27 (LAMB = 0.13)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 4.000000e-02
+  Iteración 2, error = 2.658261e-15 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 27 (  3.90 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 28 (LAMB = 0.135)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 3.846154e-02
+  Iteración 2, error = 5.465732e-05
+  Iteración 3, error = 3.737431e-08
+  Iteración 4, error = 2.007653e-11 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 28 (  7.57 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 29 (LAMB = 0.14)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 3.703600e-02
+  Iteración 2, error = 5.816355e-04
+  Iteración 3, error = 1.705498e-06
+  Iteración 4, error = 1.289836e-09 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 29 (  7.71 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 30 (LAMB = 0.145)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 3.570270e-02
+  Iteración 2, error = 5.672418e-04
+  Iteración 3, error = 1.688944e-06
+  Iteración 4, error = 1.317216e-09 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 30 (  7.31 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 31 (LAMB = 0.15)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 3.446195e-02
+  Iteración 2, error = 5.092074e-04
+  Iteración 3, error = 1.466001e-04
+  Iteración 4, error = 2.053436e-07
+  Iteración 5, error = 1.285786e-10 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 31 (  9.19 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 32 (LAMB = 0.155)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 3.330444e-02
+  Iteración 2, error = 6.079686e-04
+  Iteración 3, error = 7.363110e-07
+  Iteración 4, error = 3.881378e-10 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 32 (  7.35 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 33 (LAMB = 0.16)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 3.262562e-02
+  Iteración 2, error = 3.549097e-06
+  Iteración 3, error = 2.990948e-09 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 33 (  5.52 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 34 (LAMB = 0.165)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 3.147372e-02
+  Iteración 2, error = 3.028212e-04
+  Iteración 3, error = 1.271707e-06
+  Iteración 4, error = 4.292584e-10 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 34 (  7.23 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 35 (LAMB = 0.17)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 3.076984e-02
+  Iteración 2, error = 2.052049e-04
+  Iteración 3, error = 8.920207e-07
+  Iteración 4, error = 3.389829e-10 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 35 (  7.19 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 36 (LAMB = 0.175)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 2.975115e-02
+  Iteración 2, error = 7.559345e-04
+  Iteración 3, error = 5.380356e-06
+  Iteración 4, error = 1.101981e-08
+  Iteración 5, error = 2.443318e-11 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 36 (  9.12 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 37 (LAMB = 0.18)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 2.906558e-02
+  Iteración 2, error = 6.182708e-04
+  Iteración 3, error = 2.540393e-06
+  Iteración 4, error = 2.625784e-09 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 37 (  7.40 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 38 (LAMB = 0.185)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 2.876100e-02
+  Iteración 2, error = 9.316257e-06
+  Iteración 3, error = 1.916068e-08
+  Iteración 4, error = 6.881420e-11 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 38 (  7.37 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 39 (LAMB = 0.19)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 2.734920e-02
+  Iteración 2, error = 9.507195e-04
+  Iteración 3, error = 4.718304e-06
+  Iteración 4, error = 8.429296e-09 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 39 (  7.30 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 40 (LAMB = 0.195)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 2.704373e-02
+  Iteración 2, error = 4.845595e-04
+  Iteración 3, error = 2.642177e-06
+  Iteración 4, error = 3.563392e-09 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 40 (  7.44 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 41 (LAMB = 0.2)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 2.581491e-02
+  Iteración 2, error = 1.446318e-03
+  Iteración 3, error = 7.676408e-05
+  Iteración 4, error = 6.757278e-08
+  Iteración 5, error = 6.791144e-11 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 41 (  9.18 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 42 (LAMB = 0.205)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 2.585487e-02
+  Iteración 2, error = 4.676958e-04
+  Iteración 3, error = 1.629605e-04
+  Iteración 4, error = 1.107347e-06
+  Iteración 5, error = 2.168527e-09 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 42 (  8.96 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 43 (LAMB = 0.21)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 2.528381e-02
+  Iteración 2, error = 8.190744e-04
+  Iteración 3, error = 3.038187e-06
+  Iteración 4, error = 5.691600e-09 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 43 (  7.37 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 44 (LAMB = 0.215)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 2.512508e-02
+  Iteración 2, error = 3.107568e-04
+  Iteración 3, error = 4.873598e-06
+  Iteración 4, error = 1.808191e-08
+  Iteración 5, error = 9.469663e-11 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 44 (  9.11 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 45 (LAMB = 0.22)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 2.466257e-02
+  Iteración 2, error = 1.187952e-05
+  Iteración 3, error = 3.074305e-08
+  Iteración 4, error = 1.332888e-10 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 45 (  7.47 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 46 (LAMB = 0.225)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 2.390855e-02
+  Iteración 2, error = 6.871712e-04
+  Iteración 3, error = 4.870476e-06
+  Iteración 4, error = 1.806585e-08
+  Iteración 5, error = 9.413771e-11 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 46 (  9.11 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 47 (LAMB = 0.23)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 2.350922e-02
+  Iteración 2, error = 5.148992e-04
+  Iteración 3, error = 1.951119e-06
+  Iteración 4, error = 3.490599e-09 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 47 (  7.78 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 48 (LAMB = 0.235)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 2.328737e-02
+  Iteración 2, error = 3.099435e-04
+  Iteración 3, error = 9.223061e-06
+  Iteración 4, error = 1.344453e-08
+  Iteración 5, error = 3.472080e-11 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 48 (  8.95 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 49 (LAMB = 0.24)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 2.314674e-02
+  Iteración 2, error = 3.157028e-05
+  Iteración 3, error = 4.559030e-08
+  Iteración 4, error = 1.162804e-10 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 49 (  7.32 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 50 (LAMB = 0.245)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 2.264633e-02
+  Iteración 2, error = 2.078135e-05
+  Iteración 3, error = 6.879938e-08
+  Iteración 4, error = 1.973736e-10 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 50 (  7.33 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 51 (LAMB = 0.25)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 2.215698e-02
+  Iteración 2, error = 1.935720e-05
+  Iteración 3, error = 6.492225e-08
+  Iteración 4, error = 1.908738e-10 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 51 (  7.25 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 52 (LAMB = 0.255)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 2.168751e-02
+  Iteración 2, error = 4.364472e-04
+  Iteración 3, error = 2.259017e-06
+  Iteración 4, error = 5.663634e-09 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 52 (  7.58 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 53 (LAMB = 0.26)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 2.149583e-02
+  Iteración 2, error = 6.420972e-05
+  Iteración 3, error = 9.525356e-08
+  Iteración 4, error = 3.671698e-10 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 53 (  7.36 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 54 (LAMB = 0.265)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 2.137412e-02
+  Iteración 2, error = 3.158816e-05
+  Iteración 3, error = 1.537448e-07
+  Iteración 4, error = 6.225521e-10 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 54 (  7.55 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 55 (LAMB = 0.27)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 2.094626e-02
+  Iteración 2, error = 3.357158e-05
+  Iteración 3, error = 4.611881e-08
+  Iteración 4, error = 7.279245e-11 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 55 (  7.50 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 56 (LAMB = 0.275)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 2.054263e-02
+  Iteración 2, error = 7.380395e-05
+  Iteración 3, error = 3.631480e-07
+  Iteración 4, error = 2.092142e-09 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 56 (  7.33 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 57 (LAMB = 0.28)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 2.209513e-02
+  Iteración 2, error = 2.394715e-03
+  Iteración 3, error = 7.109331e-06
+  Iteración 4, error = 1.295528e-08
+  Iteración 5, error = 6.635288e-11 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 57 (  9.40 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 58 (LAMB = 0.285)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 2.191225e-02
+  Iteración 2, error = 2.392869e-03
+  Iteración 3, error = 1.122845e-06
+  Iteración 4, error = 4.552804e-09 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 58 (  7.53 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 59 (LAMB = 0.29)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 2.128788e-02
+  Iteración 2, error = 2.116913e-03
+  Iteración 3, error = 9.531667e-06
+  Iteración 4, error = 2.254864e-08
+  Iteración 5, error = 1.755181e-10 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 59 (  9.07 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 60 (LAMB = 0.295)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 2.122546e-02
+  Iteración 2, error = 2.169310e-03
+  Iteración 3, error = 1.718323e-05
+  Iteración 4, error = 1.271875e-08
+  Iteración 5, error = 9.866809e-11 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 60 (  9.16 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 61 (LAMB = 0.3)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 2.069018e-02
+  Iteración 2, error = 1.971662e-03
+  Iteración 3, error = 2.387516e-05
+  Iteración 4, error = 2.425003e-07
+  Iteración 5, error = 2.405524e-09 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 61 (  9.19 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 62 (LAMB = 0.305)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 2.206388e-02
+  Iteración 2, error = 4.189311e-03
+  Iteración 3, error = 2.939600e-05
+  Iteración 4, error = 1.360606e-07
+  Iteración 5, error = 1.370591e-09 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 62 (  9.23 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 63 (LAMB = 0.31)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 2.106089e-02
+  Iteración 2, error = 3.643758e-03
+  Iteración 3, error = 3.999282e-05
+  Iteración 4, error = 1.024107e-07
+  Iteración 5, error = 8.780847e-10 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 63 ( 12.83 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 64 (LAMB = 0.315)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 2.137412e-02
+  Iteración 2, error = 3.776931e-03
+  Iteración 3, error = 1.688945e-05
+  Iteración 4, error = 1.017394e-07
+  Iteración 5, error = 1.111431e-09 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 64 (  9.49 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 65 (LAMB = 0.32)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 2.431843e-02
+  Iteración 2, error = 6.848652e-03
+  Iteración 3, error = 6.410531e-05
+  Iteración 4, error = 5.705967e-07
+  Iteración 5, error = 7.551018e-09 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 65 (  9.23 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 66 (LAMB = 0.325)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 2.585104e-02
+  Iteración 2, error = 8.780702e-03
+  Iteración 3, error = 1.297706e-04
+  Iteración 4, error = 2.650100e-07
+  Iteración 5, error = 1.400227e-09 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 66 (  9.39 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 67 (LAMB = 0.33)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 2.671506e-02
+  Iteración 2, error = 1.039425e-02
+  Iteración 3, error = 2.481767e-04
+  Iteración 4, error = 2.230630e-05
+  Iteración 5, error = 2.385872e-07
+  Iteración 6, error = 1.785379e-09 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 67 ( 11.14 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 68 (LAMB = 0.335)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 2.676606e-02
+  Iteración 2, error = 1.036020e-02
+  Iteración 3, error = 1.276643e-04
+  Iteración 4, error = 4.099133e-07
+  Iteración 5, error = 3.564232e-09 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 68 (  9.33 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 69 (LAMB = 0.34)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 2.680350e-02
+  Iteración 2, error = 1.044251e-02
+  Iteración 3, error = 1.493017e-04
+  Iteración 4, error = 1.234401e-05
+  Iteración 5, error = 6.113250e-08
+  Iteración 6, error = 6.647840e-10 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 69 ( 11.16 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 70 (LAMB = 0.345)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 2.853276e-02
+  Iteración 2, error = 1.249795e-02
+  Iteración 3, error = 1.253907e-04
+  Iteración 4, error = 6.053535e-07
+  Iteración 5, error = 3.918341e-09 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 70 (  9.56 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 71 (LAMB = 0.35)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 2.840797e-02
+  Iteración 2, error = 1.245212e-02
+  Iteración 3, error = 1.350668e-04
+  Iteración 4, error = 1.113466e-06
+  Iteración 5, error = 7.239037e-09 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 71 (  9.39 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 72 (LAMB = 0.352)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 6.560059e-03
+  Iteración 2, error = 7.392302e-04
+  Iteración 3, error = 1.487904e-05
+  Iteración 4, error = 6.981479e-08
+  Iteración 5, error = 7.565587e-10 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 72 (  9.35 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 73 (LAMB = 0.354)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 6.452057e-03
+  Iteración 2, error = 6.684177e-04
+  Iteración 3, error = 1.820644e-04
+  Iteración 4, error = 1.318222e-04
+  Iteración 5, error = 2.434565e-06
+  Iteración 6, error = 3.479181e-08
+  Iteración 7, error = 5.169964e-10 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 73 ( 12.94 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 74 (LAMB = 0.356)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 6.333694e-03
+  Iteración 2, error = 7.493182e-04
+  Iteración 3, error = 1.827706e-04
+  Iteración 4, error = 1.304124e-04
+  Iteración 5, error = 2.445799e-06
+  Iteración 6, error = 3.539790e-08
+  Iteración 7, error = 5.293580e-10 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 74 ( 12.69 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 75 (LAMB = 0.358)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 6.690678e-03
+  Iteración 2, error = 3.238976e-04
+  Iteración 3, error = 2.443589e-04
+  Iteración 4, error = 5.221237e-06
+  Iteración 5, error = 7.771270e-08
+  Iteración 6, error = 1.168893e-09 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 75 ( 11.28 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 76 (LAMB = 0.36)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 6.665867e-03
+  Iteración 2, error = 2.933721e-04
+  Iteración 3, error = 1.416757e-04
+  Iteración 4, error = 1.097571e-04
+  Iteración 5, error = 2.059402e-06
+  Iteración 6, error = 3.025331e-08
+  Iteración 7, error = 4.588091e-10 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 76 ( 12.94 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 77 (LAMB = 0.362)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 6.361081e-03
+  Iteración 2, error = 6.106698e-04
+  Iteración 3, error = 1.384299e-04
+  Iteración 4, error = 1.050773e-04
+  Iteración 5, error = 1.951787e-06
+  Iteración 6, error = 2.854878e-08
+  Iteración 7, error = 4.313918e-10 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 77 ( 12.89 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 78 (LAMB = 0.364)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 6.612183e-03
+  Iteración 2, error = 2.992907e-04
+  Iteración 3, error = 5.642130e-06
+  Iteración 4, error = 4.976584e-08
+  Iteración 5, error = 6.474432e-10 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 78 (  9.39 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 79 (LAMB = 0.366)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 6.543743e-03
+  Iteración 2, error = 3.308224e-04
+  Iteración 3, error = 1.365865e-04
+  Iteración 4, error = 8.226474e-05
+  Iteración 5, error = 4.283255e-05
+  Iteración 6, error = 5.940732e-07
+  Iteración 7, error = 8.148144e-09 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 79 ( 13.86 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 80 (LAMB = 0.368)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 6.386765e-03
+  Iteración 2, error = 4.153821e-04
+  Iteración 3, error = 1.353433e-04
+  Iteración 4, error = 8.187975e-05
+  Iteración 5, error = 4.170612e-05
+  Iteración 6, error = 5.740644e-07
+  Iteración 7, error = 7.837898e-09 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 80 ( 13.40 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 81 (LAMB = 0.37)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 6.598451e-03
+  Iteración 2, error = 2.014012e-04
+  Iteración 3, error = 9.062001e-06
+  Iteración 4, error = 7.072402e-08
+  Iteración 5, error = 8.912722e-10 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 81 (  9.34 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 82 (LAMB = 0.372)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 6.523824e-03
+  Iteración 2, error = 2.910328e-04
+  Iteración 3, error = 4.499297e-05
+  Iteración 4, error = 6.399753e-07
+  Iteración 5, error = 8.906352e-09 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 82 (  9.23 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 83 (LAMB = 0.374)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 6.381606e-03
+  Iteración 2, error = 3.167106e-04
+  Iteración 3, error = 8.226060e-05
+  Iteración 4, error = 4.389209e-05
+  Iteración 5, error = 5.942370e-07
+  Iteración 6, error = 8.083135e-09 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 83 ( 11.14 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 84 (LAMB = 0.376)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 6.357153e-03
+  Iteración 2, error = 3.146238e-04
+  Iteración 3, error = 6.222874e-06
+  Iteración 4, error = 5.817583e-08
+  Iteración 5, error = 7.911761e-10 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 84 (  9.41 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 85 (LAMB = 0.378)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 6.239849e-03
+  Iteración 2, error = 3.311647e-04
+  Iteración 3, error = 1.304025e-04
+  Iteración 4, error = 7.809497e-05
+  Iteración 5, error = 4.114429e-05
+  Iteración 6, error = 5.493169e-07
+  Iteración 7, error = 7.488038e-09 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 85 ( 12.79 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 86 (LAMB = 0.38)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 6.011507e-03
+  Iteración 2, error = 5.999614e-04
+  Iteración 3, error = 1.296361e-04
+  Iteración 4, error = 7.904474e-05
+  Iteración 5, error = 3.787707e-05
+  Iteración 6, error = 5.209136e-07
+  Iteración 7, error = 7.255798e-09 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 86 ( 12.68 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 87 (LAMB = 0.382)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 5.847212e-03
+  Iteración 2, error = 7.316521e-04
+  Iteración 3, error = 1.280320e-04
+  Iteración 4, error = 7.668766e-05
+  Iteración 5, error = 3.667106e-05
+  Iteración 6, error = 4.999851e-07
+  Iteración 7, error = 6.936588e-09 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 87 ( 12.66 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 88 (LAMB = 0.384)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 5.959595e-03
+  Iteración 2, error = 5.283450e-04
+  Iteración 3, error = 1.341919e-04
+  Iteración 4, error = 7.458826e-05
+  Iteración 5, error = 3.822447e-05
+  Iteración 6, error = 5.043865e-07
+  Iteración 7, error = 6.896188e-09 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 88 ( 12.72 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 89 (LAMB = 0.386)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 5.826471e-03
+  Iteración 2, error = 6.802857e-04
+  Iteración 3, error = 1.445116e-04
+  Iteración 4, error = 4.256785e-05
+  Iteración 5, error = 5.745126e-07
+  Iteración 6, error = 7.872447e-09 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 89 ( 11.01 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 90 (LAMB = 0.388)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 5.817532e-03
+  Iteración 2, error = 6.067635e-04
+  Iteración 3, error = 1.747938e-04
+  Iteración 4, error = 7.537593e-05
+  Iteración 5, error = 3.468085e-05
+  Iteración 6, error = 4.647941e-07
+  Iteración 7, error = 6.375881e-09 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 90 ( 12.78 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 91 (LAMB = 0.39)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 5.990455e-03
+  Iteración 2, error = 3.294637e-04
+  Iteración 3, error = 1.286462e-04
+  Iteración 4, error = 7.247813e-05
+  Iteración 5, error = 3.599936e-05
+  Iteración 6, error = 4.667679e-07
+  Iteración 7, error = 6.312510e-09 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 91 ( 12.73 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 92 (LAMB = 0.392)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 5.934035e-03
+  Iteración 2, error = 3.561474e-04
+  Iteración 3, error = 1.283323e-04
+  Iteración 4, error = 7.210937e-05
+  Iteración 5, error = 3.950632e-05
+  Iteración 6, error = 5.241332e-07
+  Iteración 7, error = 7.054716e-09 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 92 ( 12.78 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 93 (LAMB = 0.394)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 5.840046e-03
+  Iteración 2, error = 4.320453e-04
+  Iteración 3, error = 1.283318e-04
+  Iteración 4, error = 7.413276e-05
+  Iteración 5, error = 3.727150e-05
+  Iteración 6, error = 5.085805e-07
+  Iteración 7, error = 6.905143e-09 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 93 ( 12.69 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 94 (LAMB = 0.396)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 5.646857e-03
+  Iteración 2, error = 6.231715e-04
+  Iteración 3, error = 1.705179e-04
+  Iteración 4, error = 7.388952e-05
+  Iteración 5, error = 3.666177e-05
+  Iteración 6, error = 5.031279e-07
+  Iteración 7, error = 6.862461e-09 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 94 ( 12.56 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 95 (LAMB = 0.398)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 5.754315e-03
+  Iteración 2, error = 4.509191e-04
+  Iteración 3, error = 1.267832e-04
+  Iteración 4, error = 7.281005e-05
+  Iteración 5, error = 3.610087e-05
+  Iteración 6, error = 4.882723e-07
+  Iteración 7, error = 6.596233e-09 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 95 ( 12.70 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 96 (LAMB = 0.4)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 5.886689e-03
+  Iteración 2, error = 3.149657e-04
+  Iteración 3, error = 2.028470e-05
+  Iteración 4, error = 2.224402e-07
+  Iteración 5, error = 2.976817e-09 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 96 (  9.48 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 97 (LAMB = 0.402)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 5.450220e-03
+  Iteración 2, error = 7.229563e-04
+  Iteración 3, error = 1.661031e-04
+  Iteración 4, error = 7.208140e-05
+  Iteración 5, error = 3.510166e-05
+  Iteración 6, error = 4.722320e-07
+  Iteración 7, error = 6.359940e-09 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 97 ( 12.75 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 98 (LAMB = 0.404)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 5.656590e-03
+  Iteración 2, error = 4.483374e-04
+  Iteración 3, error = 1.237944e-04
+  Iteración 4, error = 7.110097e-05
+  Iteración 5, error = 3.470075e-05
+  Iteración 6, error = 4.648814e-07
+  Iteración 7, error = 6.239253e-09 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 98 ( 12.81 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 99 (LAMB = 0.406)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 5.486572e-03
+  Iteración 2, error = 6.407516e-04
+  Iteración 3, error = 1.370302e-04
+  Iteración 4, error = 3.537338e-05
+  Iteración 5, error = 4.784857e-07
+  Iteración 6, error = 6.481968e-09 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 99 ( 10.85 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 100 (LAMB = 0.408)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 5.672354e-03
+  Iteración 2, error = 3.247261e-04
+  Iteración 3, error = 1.207092e-04
+  Iteración 4, error = 6.950515e-05
+  Iteración 5, error = 3.365285e-05
+  Iteración 6, error = 4.464824e-07
+  Iteración 7, error = 5.956068e-09 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 100 ( 12.78 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 101 (LAMB = 0.41)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 5.357533e-03
+  Iteración 2, error = 7.015256e-04
+  Iteración 3, error = 1.171170e-04
+  Iteración 4, error = 6.894366e-05
+  Iteración 5, error = 3.315131e-05
+  Iteración 6, error = 4.377315e-07
+  Iteración 7, error = 5.822142e-09 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 101 ( 12.76 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 102 (LAMB = 0.412)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 5.730773e-03
+  Iteración 2, error = 2.259197e-04
+  Iteración 3, error = 1.163048e-04
+  Iteración 4, error = 6.840245e-05
+  Iteración 5, error = 3.266460e-05
+  Iteración 6, error = 4.292761e-07
+  Iteración 7, error = 5.693012e-09 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 102 ( 12.75 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 103 (LAMB = 0.414)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 5.514547e-03
+  Iteración 2, error = 4.061025e-04
+  Iteración 3, error = 1.188461e-04
+  Iteración 4, error = 6.786720e-05
+  Iteración 5, error = 3.219170e-05
+  Iteración 6, error = 4.210941e-07
+  Iteración 7, error = 5.568261e-09 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 103 ( 12.74 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 104 (LAMB = 0.416)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 5.641004e-03
+  Iteración 2, error = 2.548980e-04
+  Iteración 3, error = 1.153305e-04
+  Iteración 4, error = 6.734090e-05
+  Iteración 5, error = 3.173227e-05
+  Iteración 6, error = 4.673470e-06
+  Iteración 7, error = 5.668660e-08
+  Iteración 8, error = 9.117804e-10 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 104 ( 14.45 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 105 (LAMB = 0.418)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 5.610346e-03
+  Iteración 2, error = 2.785471e-04
+  Iteración 3, error = 2.056833e-05
+  Iteración 4, error = 2.447009e-07
+  Iteración 5, error = 3.649558e-09 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 105 (  9.59 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 106 (LAMB = 0.42)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 5.391712e-03
+  Iteración 2, error = 4.434945e-04
+  Iteración 3, error = 1.262223e-04
+  Iteración 4, error = 8.155341e-05
+  Iteración 5, error = 4.468878e-05
+  Iteración 6, error = 6.641586e-07
+  Iteración 7, error = 9.943440e-09 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 106 ( 12.71 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 107 (LAMB = 0.422)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 5.261155e-03
+  Iteración 2, error = 5.852550e-04
+  Iteración 3, error = 1.976368e-04
+  Iteración 4, error = 4.406500e-05
+  Iteración 5, error = 6.893119e-07
+  Iteración 6, error = 1.063552e-08
+  Iteración 7, error = 1.817728e-10 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 107 ( 12.55 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 108 (LAMB = 0.424)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 5.353436e-03
+  Iteración 2, error = 4.031188e-04
+  Iteración 3, error = 1.234000e-04
+  Iteración 4, error = 8.546782e-05
+  Iteración 5, error = 4.178658e-05
+  Iteración 6, error = 6.080434e-07
+  Iteración 7, error = 8.944511e-09 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 108 ( 12.72 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 109 (LAMB = 0.426)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 5.302534e-03
+  Iteración 2, error = 4.351762e-04
+  Iteración 3, error = 1.179565e-04
+  Iteración 4, error = 8.240406e-05
+  Iteración 5, error = 4.001257e-05
+  Iteración 6, error = 6.373243e-07
+  Iteración 7, error = 1.041941e-08
+  Iteración 8, error = 1.914176e-10 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 109 ( 14.78 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 110 (LAMB = 0.428)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 5.484850e-03
+  Iteración 2, error = 2.839336e-04
+  Iteración 3, error = 8.277277e-05
+  Iteración 4, error = 3.905984e-05
+  Iteración 5, error = 6.184072e-07
+  Iteración 6, error = 1.009979e-08
+  Iteración 7, error = 1.854357e-10 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 110 ( 12.94 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 111 (LAMB = 0.43)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 5.370494e-03
+  Iteración 2, error = 3.305469e-04
+  Iteración 3, error = 1.983217e-04
+  Iteración 4, error = 4.936550e-05
+  Iteración 5, error = 8.740281e-07
+  Iteración 6, error = 1.507372e-08
+  Iteración 7, error = 2.867555e-10 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 111 ( 12.77 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 112 (LAMB = 0.432)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 5.425800e-03
+  Iteración 2, error = 2.659945e-04
+  Iteración 3, error = 4.831750e-06
+  Iteración 4, error = 9.612505e-07
+  Iteración 5, error = 4.323528e-09 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 112 (  9.31 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 113 (LAMB = 0.434)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 5.349000e-03
+  Iteración 2, error = 2.443875e-04
+  Iteración 3, error = 2.045831e-04
+  Iteración 4, error = 4.893058e-05
+  Iteración 5, error = 8.958642e-07
+  Iteración 6, error = 1.632826e-08
+  Iteración 7, error = 3.269721e-10 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 113 ( 12.80 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 114 (LAMB = 0.436)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 5.296686e-03
+  Iteración 2, error = 2.943940e-04
+  Iteración 3, error = 2.041307e-04
+  Iteración 4, error = 4.800519e-05
+  Iteración 5, error = 8.751167e-07
+  Iteración 6, error = 1.595185e-08
+  Iteración 7, error = 3.195898e-10 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 114 ( 12.82 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 115 (LAMB = 0.438)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 5.313557e-03
+  Iteración 2, error = 2.521866e-04
+  Iteración 3, error = 2.042004e-04
+  Iteración 4, error = 4.777340e-05
+  Iteración 5, error = 8.701933e-07
+  Iteración 6, error = 1.585714e-08
+  Iteración 7, error = 3.177190e-10 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 115 ( 12.75 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 116 (LAMB = 0.44)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 5.248564e-03
+  Iteración 2, error = 2.995985e-04
+  Iteración 3, error = 2.021794e-04
+  Iteración 4, error = 4.750095e-05
+  Iteración 5, error = 8.639823e-07
+  Iteración 6, error = 1.573159e-08
+  Iteración 7, error = 3.151835e-10 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 116 ( 12.99 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 117 (LAMB = 0.442)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 5.216789e-03
+  Iteración 2, error = 2.954573e-04
+  Iteración 3, error = 2.021625e-04
+  Iteración 4, error = 4.745353e-05
+  Iteración 5, error = 8.820694e-07
+  Iteración 6, error = 1.652260e-08
+  Iteración 7, error = 3.396873e-10 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 117 ( 13.01 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 118 (LAMB = 0.444)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 5.067002e-03
+  Iteración 2, error = 4.134837e-04
+  Iteración 3, error = 1.671183e-04
+  Iteración 4, error = 8.427087e-05
+  Iteración 5, error = 4.529855e-05
+  Iteración 6, error = 7.963713e-07
+  Iteración 7, error = 1.455843e-08
+  Iteración 8, error = 2.976095e-10 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 118 ( 14.44 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 119 (LAMB = 0.446)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 5.299990e-03
+  Iteración 2, error = 1.743772e-04
+  Iteración 3, error = 8.706320e-06
+  Iteración 4, error = 9.149236e-08
+  Iteración 5, error = 1.779595e-09 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 119 (  9.49 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 120 (LAMB = 0.448)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 5.169373e-03
+  Iteración 2, error = 2.203634e-04
+  Iteración 3, error = 1.968540e-04
+  Iteración 4, error = 4.579978e-05
+  Iteración 5, error = 8.457649e-07
+  Iteración 6, error = 1.584151e-08
+  Iteración 7, error = 3.260559e-10 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 120 ( 12.84 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 121 (LAMB = 0.45)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 5.180648e-03
+  Iteración 2, error = 2.052905e-04
+  Iteración 3, error = 1.970610e-04
+  Iteración 4, error = 4.565029e-05
+  Iteración 5, error = 8.424979e-07
+  Iteración 6, error = 1.577490e-08
+  Iteración 7, error = 3.247441e-10 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 121 ( 12.95 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 122 (LAMB = 0.452)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 5.162039e-03
+  Iteración 2, error = 1.811065e-04
+  Iteración 3, error = 1.957208e-04
+  Iteración 4, error = 4.541866e-05
+  Iteración 5, error = 8.375640e-07
+  Iteración 6, error = 1.567857e-08
+  Iteración 7, error = 3.228352e-10 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 122 ( 12.95 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 123 (LAMB = 0.454)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 5.110381e-03
+  Iteración 2, error = 1.931247e-04
+  Iteración 3, error = 1.934594e-04
+  Iteración 4, error = 4.515087e-05
+  Iteración 5, error = 8.331282e-07
+  Iteración 6, error = 1.558851e-08
+  Iteración 7, error = 3.210282e-10 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 123 ( 12.79 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 124 (LAMB = 0.456)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 5.002098e-03
+  Iteración 2, error = 3.434480e-04
+  Iteración 3, error = 1.629655e-04
+  Iteración 4, error = 8.314164e-05
+  Iteración 5, error = 4.444938e-05
+  Iteración 6, error = 7.863809e-07
+  Iteración 7, error = 1.454580e-08
+  Iteración 8, error = 3.018177e-10 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 124 ( 14.79 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 125 (LAMB = 0.458)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 5.091772e-03
+  Iteración 2, error = 1.842628e-04
+  Iteración 3, error = 1.932737e-04
+  Iteración 4, error = 4.434580e-05
+  Iteración 5, error = 8.235951e-07
+  Iteración 6, error = 1.563350e-08
+  Iteración 7, error = 3.265316e-10 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 125 ( 12.96 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 126 (LAMB = 0.46)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 5.061515e-03
+  Iteración 2, error = 1.716233e-04
+  Iteración 3, error = 1.918056e-04
+  Iteración 4, error = 4.412731e-05
+  Iteración 5, error = 8.190461e-07
+  Iteración 6, error = 1.554600e-08
+  Iteración 7, error = 3.248328e-10 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 126 ( 12.80 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 127 (LAMB = 0.462)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 4.876239e-03
+  Iteración 2, error = 3.586691e-04
+  Iteración 3, error = 1.699721e-04
+  Iteración 4, error = 8.166243e-05
+  Iteración 5, error = 4.269285e-05
+  Iteración 6, error = 7.505085e-07
+  Iteración 7, error = 1.388644e-08
+  Iteración 8, error = 2.887111e-10 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 127 ( 14.66 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 128 (LAMB = 0.464)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 5.026678e-03
+  Iteración 2, error = 2.510568e-04
+  Iteración 3, error = 8.236173e-05
+  Iteración 4, error = 4.263465e-05
+  Iteración 5, error = 7.493650e-07
+  Iteración 6, error = 1.386488e-08
+  Iteración 7, error = 2.883976e-10 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 128 ( 12.90 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 129 (LAMB = 0.466)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 4.840782e-03
+  Iteración 2, error = 3.784104e-04
+  Iteración 3, error = 1.905402e-04
+  Iteración 4, error = 4.362381e-05
+  Iteración 5, error = 8.061717e-07
+  Iteración 6, error = 1.529510e-08
+  Iteración 7, error = 3.202507e-10 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 129 ( 12.90 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 130 (LAMB = 0.468)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 4.905748e-03
+  Iteración 2, error = 2.144355e-04
+  Iteración 3, error = 1.891105e-04
+  Iteración 4, error = 4.342687e-05
+  Iteración 5, error = 8.023961e-07
+  Iteración 6, error = 1.522656e-08
+  Iteración 7, error = 3.189848e-10 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 130 ( 12.88 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 131 (LAMB = 0.47)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 4.815467e-03
+  Iteración 2, error = 3.455623e-04
+  Iteración 3, error = 1.890025e-04
+  Iteración 4, error = 4.322773e-05
+  Iteración 5, error = 7.982220e-07
+  Iteración 6, error = 1.515002e-08
+  Iteración 7, error = 3.175715e-10 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 131 ( 12.84 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 132 (LAMB = 0.472)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 4.853068e-03
+  Iteración 2, error = 2.168120e-04
+  Iteración 3, error = 1.875192e-04
+  Iteración 4, error = 4.303926e-05
+  Iteración 5, error = 7.945874e-07
+  Iteración 6, error = 1.508404e-08
+  Iteración 7, error = 3.163568e-10 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 132 ( 12.86 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 133 (LAMB = 0.474)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 4.830258e-03
+  Iteración 2, error = 2.192530e-04
+  Iteración 3, error = 1.879086e-04
+  Iteración 4, error = 4.293102e-05
+  Iteración 5, error = 7.921744e-07
+  Iteración 6, error = 1.507737e-08
+  Iteración 7, error = 3.177033e-10 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 133 ( 12.94 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 134 (LAMB = 0.476)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 4.789264e-03
+  Iteración 2, error = 2.606699e-04
+  Iteración 3, error = 1.868331e-04
+  Iteración 4, error = 4.256299e-05
+  Iteración 5, error = 7.843689e-07
+  Iteración 6, error = 1.493196e-08
+  Iteración 7, error = 3.148157e-10 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 134 ( 12.90 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 135 (LAMB = 0.478)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 4.652446e-03
+  Iteración 2, error = 3.760690e-04
+  Iteración 3, error = 1.639912e-04
+  Iteración 4, error = 1.061943e-04
+  Iteración 5, error = 2.656920e-06
+  Iteración 6, error = 5.289009e-08
+  Iteración 7, error = 1.125187e-09 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 135 ( 12.95 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 136 (LAMB = 0.48)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 4.646904e-03
+  Iteración 2, error = 3.409891e-04
+  Iteración 3, error = 1.621396e-04
+  Iteración 4, error = 1.057637e-04
+  Iteración 5, error = 2.646282e-06
+  Iteración 6, error = 5.269737e-08
+  Iteración 7, error = 1.121842e-09 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 136 ( 12.74 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 137 (LAMB = 0.482)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 4.713918e-03
+  Iteración 2, error = 2.605122e-04
+  Iteración 3, error = 1.847245e-04
+  Iteración 4, error = 4.203722e-05
+  Iteración 5, error = 7.743899e-07
+  Iteración 6, error = 1.475754e-08
+  Iteración 7, error = 3.117716e-10 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 137 ( 13.01 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 138 (LAMB = 0.484)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 4.618055e-03
+  Iteración 2, error = 3.795958e-04
+  Iteración 3, error = 1.619505e-04
+  Iteración 4, error = 1.049353e-04
+  Iteración 5, error = 2.625459e-06
+  Iteración 6, error = 5.232022e-08
+  Iteración 7, error = 1.115317e-09 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 138 ( 13.07 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 139 (LAMB = 0.486)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 4.534725e-03
+  Iteración 2, error = 3.162706e-04
+  Iteración 3, error = 1.900410e-04
+  Iteración 4, error = 1.833053e-04
+  Iteración 5, error = 4.169197e-05
+  Iteración 6, error = 7.677821e-07
+  Iteración 7, error = 1.464260e-08
+  Iteración 8, error = 3.097917e-10 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 139 ( 14.65 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 140 (LAMB = 0.488)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 4.548795e-03
+  Iteración 2, error = 3.549607e-04
+  Iteración 3, error = 1.602581e-04
+  Iteración 4, error = 1.041150e-04
+  Iteración 5, error = 2.604639e-06
+  Iteración 6, error = 5.193820e-08
+  Iteración 7, error = 1.108705e-09 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 140 ( 12.90 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 141 (LAMB = 0.49)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 4.597136e-03
+  Iteración 2, error = 3.024971e-04
+  Iteración 3, error = 1.608609e-04
+  Iteración 4, error = 1.037385e-04
+  Iteración 5, error = 1.404628e-05
+  Iteración 6, error = 1.814828e-07
+  Iteración 7, error = 3.283077e-09 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 141 ( 12.85 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 142 (LAMB = 0.492)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 4.635904e-03
+  Iteración 2, error = 1.891245e-04
+  Iteración 3, error = 1.800860e-04
+  Iteración 4, error = 4.117501e-05
+  Iteración 5, error = 7.578179e-07
+  Iteración 6, error = 1.446530e-08
+  Iteración 7, error = 3.066548e-10 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 142 ( 12.89 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 143 (LAMB = 0.494)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 4.514817e-03
+  Iteración 2, error = 3.468104e-04
+  Iteración 3, error = 1.585481e-04
+  Iteración 4, error = 1.029261e-04
+  Iteración 5, error = 2.575087e-06
+  Iteración 6, error = 5.141202e-08
+  Iteración 7, error = 1.099777e-09 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 143 ( 12.93 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 144 (LAMB = 0.496)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 4.475276e-03
+  Iteración 2, error = 3.247066e-04
+  Iteración 3, error = 1.567611e-04
+  Iteración 4, error = 1.025304e-04
+  Iteración 5, error = 2.565326e-06
+  Iteración 6, error = 5.123761e-08
+  Iteración 7, error = 1.096813e-09 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 144 ( 13.22 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 145 (LAMB = 0.498)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 4.366207e-03
+  Iteración 2, error = 3.812423e-04
+  Iteración 3, error = 2.353578e-04
+  Iteración 4, error = 1.032047e-04
+  Iteración 5, error = 1.373623e-05
+  Iteración 6, error = 1.771595e-07
+  Iteración 7, error = 3.210854e-09 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 145 ( 12.94 seg.) 
+ ----------------------------------------------------------------- 
+ Pseudotiempo número 146 (LAMB = 0.5)
+ ----------------------------------------------------------------- 
+  Iteración 1, error = 4.442672e-03
+  Iteración 2, error = 3.163141e-04
+  Iteración 3, error = 1.552779e-04
+  Iteración 4, error = 1.020325e-04
+  Iteración 5, error = 2.560960e-06
+  Iteración 6, error = 5.139147e-08
+  Iteración 7, error = 1.105863e-09 < TOLE = 1.000000e-08
+ 
+ Convergencia pseudotiempo número 146 ( 13.11 seg.) 
+ ----------------------------------------------------------------- 
+Fin del proceso iterativo de Newton Raphson (1408.84 seg.) 
+----------------------------------------------------------------- 
+Tiempo total de ejecucion del programa  (1409.09 seg.) 
+diary off
