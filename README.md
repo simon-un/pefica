@@ -8,7 +8,7 @@ Este programa se escribió para utilizar principalmente como una herramienta did
 
 ```
 % Uso: 
-%      PEFICA ADAT TLEC 
+%      PEFICA ADAT TLEC
 %      PEFICA("ADAT", "TLEC")
 %
 % Uso desde consola (terminal):
